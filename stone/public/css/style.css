@@ -13,6 +13,11 @@ body {
   font-weight: 300;
   font-size: 16px; }
 
+.title-font{
+  font-family:'Merienda', cursive;
+}
+
+
 ::-moz-selection {
   background: #000;
   color: #fff; }
@@ -74,6 +79,16 @@ section.home-category-section {padding: 30px 0;}
 	transition: transform 2s, filter 3s ease-in-out;
   transform: scale(1.1);
 }
+/* page banner csss */
+.page-banner{
+  position: relative;
+}
+.banner-text{
+  position: absolute;
+  top: 45%;
+  left: 22%;
+}
+/* end  */
 .site-wrap:before {
   -webkit-transition: .3s all ease-in-out;
   -o-transition: .3s all ease-in-out;
@@ -99,6 +114,12 @@ section.home-category-section {padding: 30px 0;}
     opacity: 1;
     visibility: visible; }
 
+    .buy_gemstone_btn{
+      border-radius: 25px;
+      padding: 10px 20px;
+      background:var(--main-root-color2);
+      color: #fff;
+    }
 .btn {
   text-transform: uppercase;
   position: relative;
@@ -145,27 +166,9 @@ section.home-category-section {padding: 30px 0;}
 
 .site-section-heading {
   font-size: 30px;
-  color: #25262a;
+  
   position: relative; }
-  .site-section-heading:before {
-    content: "";
-    left: 0%;
-    top: 0;
-    position: absolute;
-    width: 40px;
-    height: 2px;
-    background: var(--main-root-color1); }
-  .site-section-heading.text-center:before {
-    content: "";
-    left: 50%;
-    top: 0;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-    position: absolute;
-    width: 40px;
-    height: 2px;
-    background: var(--main-root-color1); }
+  
 
 .border-top {
   border-top: 1px solid #edf0f5 !important; }
@@ -361,18 +364,12 @@ background: #e9e9e9;
 }
 .menu-mobile {
 display: none;
-padding: 20px;
+
 }
 .menu-mobile:after {
 content: "\f394";
 font-family: "Ionicons";
-font-size: 2.5rem;
-padding: 0;
-float: right;
-position: relative;
-top: 50%;
--webkit-transform: translateY(-25%);
-        transform: translateY(-25%);
+
 }
 .menu-dropdown-icon:before {
 content: "\f489";

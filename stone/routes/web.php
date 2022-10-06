@@ -15,7 +15,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('website.index');
-});
+})->name('home');
+
+Route::get('/about', function () {  return view('website.about');})->name('about');
+Route::get('/contact', function () {  return view('website.contact');})->name('contact');
+Route::get('/terms-conditions', function () {  return view('website.terms-conditions');})->name('terms-conditions');
+Route::get('/privacy-policy', function () {  return view('website.privacy-policy');})->name('privacy-policy');
+
+Route::get('/ring-designs', function () {  return view('website.ring-designs');})->name('ring-designs');
+Route::get('/pendant-designs', function () {  return view('website.pendant-designs');})->name('pendant-designs');
+
+Route::get('/pendant-designs', function () {  return view('website.pendant-designs');})->name('pendant-designs');
+Route::get('/products', function () {  return view('website.shop');})->name('products');
+Route::get('/category-page', function () {  return view('website.categories');})->name('category-page');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
