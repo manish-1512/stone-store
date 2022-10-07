@@ -33,6 +33,9 @@ a {
   a:hover {
     text-decoration: none; }
 
+/*  */
+   
+/*  */
 .text-black {
   color: #000; }
 
@@ -174,7 +177,7 @@ section.home-category-section {padding: 30px 0;}
   border-top: 1px solid #edf0f5 !important; }
 
 .site-footer {
-  background-image: linear-gradient(to left, #1a110a, #1e150f, #221812, #261c15, #2a1f18);
+ background-color: #f6f6f6;
   padding: 4em 0; }
 
 /*  */
@@ -222,7 +225,7 @@ section.home-category-section {padding: 30px 0;}
   border-radius: 50%;
   line-height: calc(60px - 12px);
   font-size:24px;
-  color: #262626;
+  color: var(--main-root-color2);
   transition: .5s;
 }
 
@@ -251,12 +254,12 @@ section.home-category-section {padding: 30px 0;}
   .site-footer ul li {
     margin-bottom: 10px; }
     .site-footer ul li a {
-      color: #fff; }
+      color:  var(--main-root-color1); }
       .site-footer ul li a:hover {
-        color: var(--main-root-color1);; }
+        color: var(--main-root-color2);; }
   .site-footer .footer-heading {
     font-size: 20px;
-    color:#fff; }
+    color:var(--main-root-color2); }
 
 /* Navbar */
 .site-navbar {
@@ -830,8 +833,7 @@ display:inline-block;
       content: "";
       position: absolute;
       height: 100%;
-      width: 1px;
-      right: 10px;
+     
       background: #edf0f5; }
     .site-blocks-1 .divider:last-child:after {
       display: none; }
@@ -918,13 +920,39 @@ display:inline-block;
 
 .block-4 {
   -webkit-box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0);
   background: #fff; }
+
+  .rudraksha_section{
+    background-color: #f8f9fa;
+  }
+
+  .rudraksha_section a ,.pearl_section a{
+    text-decoration: none;
+    color:var(--main-root-color1) ;
+  }
+  .rudraksha_section a :hover{
+    transform: scale(1.2);
+    transition: transform .5s ease;
+  }
+  .rudraksha_image a:hover{
+    transform: scale(1.2);
+    transition: transform .5s ease;
+  }
+  .pearl_section a :hover{
+    transform: scale(1.1);
+    transition: transform .5s ease;
+  }
+  .jewellery_collection{
+    background-color: #f8f9fa;
+  }
+
   .block-4 .block-4-text h3 {
     font-size: 20px;
     margin-bottom: 0; }
     .block-4 .block-4-text h3 a {
       text-decoration: none; }
+
 
 .block-5 ul, .block-5 ul li {
   list-style: none;
@@ -936,7 +964,7 @@ display:inline-block;
   padding-left: 30px;
   position: relative;
   margin-bottom: 15px;
-  color: #fff; }
+  color: var(--main-root-color1); }
   .block-5 ul li:before {
     top: 0;
     font-family: "icomoon";

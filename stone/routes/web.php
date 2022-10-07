@@ -29,6 +29,10 @@ Route::get('/pendant-designs', function () {  return view('website.pendant-desig
 Route::get('/products', function () {  return view('website.shop');})->name('products');
 Route::get('/category-page', function () {  return view('website.categories');})->name('category-page');
 
+Route::get('/login', function () {  return view('website.login');})->name('login');
+
+Route::get('/register', function () {  return view('website.login');})->name('register');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

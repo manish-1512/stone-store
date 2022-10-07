@@ -55,14 +55,14 @@
                 </a>
               </div>
             </div>
-
+           
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
               <div class="site-top-icons">
                 <ul>
                   <li><a href="#"><span class="icon icon-person"></span></a></li>
-                  <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
+                  <li><a data-toggle="modal" data-target="#wishlist" class="site-cart"><span class="icon icon-heart-o"></span>   <span class="count">2</span></a></li>
                   <li>
-                    <a href="cart.html" class="site-cart">
+                    <a href="cart.html" data-toggle="modal" data-target="#cart" class="site-cart">
                       <span class="icon icon-shopping_cart"></span>
                       <span class="count">2</span>
                     </a>
@@ -75,6 +75,114 @@
           </div>
         </div>
       </div> 
+
+      {{-- wishlist model box --}}
+
+      <div class="modal fade" id="wishlist" tabindex="-1" role="dialog" aria-labelledby="wishlistLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="wishlistLabel">My Wish List</h5> <hr>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              @for($i=1;$i<4;$i++)
+                <div class="row">
+                    <div class="col-3">
+                      <img src="{{asset('images/most1.png')}}" alt="" height="60">
+                    </div>
+                    <div class="col-9">
+                        <div class="row">
+                            <div class="col-12">
+                              <a href="#" class="font-weight-bold"> Black Agate (Hakik) Gemstone Stretchable Bracelet  </a>
+                            </div>
+                            <div class="col-4">
+                              <a href="#" class=""> ₹ 4000</a>
+                            </div>
+                            <div class="col-4">
+                              <a href="#" class="">View Details  </a>
+                            </div>
+                            <div class="col-4">
+                              <a href="#" class="">Remove </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                @endfor
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      {{-- end wishlist model box --}}
+
+      {{-- cart model box --}}
+
+      <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="cartLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="cartLabel">2 Item In Cart </h5> <hr>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              @for($i=1;$i<3;$i++)
+                <div class="row">
+                    <div class="col-3">
+                      <img src="{{asset('images/most1.png')}}" alt="" height="60">
+                    </div>
+                    <div class="col-9">
+                        <div class="row">
+                            <div class="col-12">
+                              <a href="#" class="font-weight-bold"> Black Agate (Hakik) Gemstone Stretchable Bracelet  </a>
+                            </div>
+                            <div class="col-4">
+                              <a href="#" class=""> ₹ 4000  * 1 </a>
+                            </div>
+                            <div class="col-4">
+                              <a href="#" class="">View Details  </a>
+                            </div>
+                            <div class="col-4">
+                              <a href="#" class=""><i class="fa fa-trash" ></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                @endfor
+
+                <div class="row bg-light text-center pt-2">
+                  <div class="col-6">
+                    <p class="font-weight-bold">Cart SubTotal</p>
+                  </div>
+                  <div class="col-6">
+                    <p> ₹ 8000</p>
+                  </div>
+                </div>
+
+                  <div class="row text-center mt-3">
+
+                    <div class="col-6">
+                      <a href="#" class="btn btn-primary text-white"> View Cart</a>
+                    </div>
+                    <div class="col-6">
+                      <a href="#" class="btn btn-primary text-white"> Checkout</a>
+                    </div>
+
+                  </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      {{-- end cart model box --}}
+
+
 
       <div class="menu-container">
         <div class="menu" >
@@ -253,15 +361,7 @@
                
               </div>
             </div>
-            <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-              <h3 class="footer-heading mb-4">Promo</h3>
-              <ul class="list-unstyled">
-                <li><a href="#">Sell online</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Shopping cart</a></li>
-                <li><a href="#">Store builder</a></li>
-              </ul>
-            </div>
+            
             <div class="col-md-6 col-lg-3">
               <div class="block-5 mb-5">
                 <h3 class="footer-heading mb-4">Contact Info</h3>
@@ -281,6 +381,13 @@
                   </div>
                 </form>
               </div> --}}
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+              <h3 class="footer-heading mb-4">Download the App Now </h3>
+              <ul class="list-unstyled">
+                <li><a href="#"><img src="{{asset('images/playstore.png')}}" alt="" height="50px"></a></li>
+               
+              </ul>
             </div>
           </div>
           <div class="col-md-12 footer_icon mt-5">
@@ -342,5 +449,11 @@
     });
   
     </script>
+      <script>
+        window.onload = function() {
+      var menuButton = document.getElementById("open-menu");
+      menuButton.click();
+  };
+      </script>
     </body>
   </html>

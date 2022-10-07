@@ -11,24 +11,24 @@ jQuery(document).ready(function($) {
 	var slider = function() {
 		$('.nonloop-block-3').owlCarousel({
 	    center: false,
-	    items: 1,
+	    items: 2,
 	    loop: false,
-			stagePadding: 15,
+			stagePadding: 5,
 	    margin: 20,
 	    nav: true,
 			navText: ['<span class="icon-arrow_back">', '<span class="icon-arrow_forward">'],
 	    responsive:{
         600:{
         	margin: 20,
-          items: 2
+          items: 3
         },
         1000:{
         	margin: 20,
-          items: 3
+          items: 5
         },
         1200:{
         	margin: 20,
-          items: 3
+          items: 5
         }
 	    }
 		});
