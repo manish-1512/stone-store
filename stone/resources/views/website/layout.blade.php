@@ -17,11 +17,14 @@
 
     <link rel="stylesheet" href="{{asset('css/aos.css')}}">
 
+   
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Merienda&family=Satisfy&display=swap" rel="stylesheet">
+
   </head>
   <body>
   
@@ -105,7 +108,7 @@
                               <a href="#" class="">View Details  </a>
                             </div>
                             <div class="col-4">
-                              <a href="#" class="">Remove </a>
+                              <a href="#" class=""> <i class="fa text-danger fa-trash " > </i></a>
                             </div>
                         </div>
                     </div>
@@ -148,7 +151,7 @@
                               <a href="#" class="">View Details  </a>
                             </div>
                             <div class="col-4">
-                              <a href="#" class=""><i class="fa fa-trash" ></i> </a>
+                              <a href="#" class=""><i class="text-danger fa fa-trash" ></i> </a>
                             </div>
                         </div>
                     </div>
@@ -343,19 +346,19 @@
                 <div class="col-md-6 col-lg-4">
                   <h3 class="footer-heading mb-4">Navigations</h3>
                   <ul class="list-unstyled">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="{{route('about')}}">About Us</a></li>
+                    <li><a href="{{route('contact')}}">Contact Us</a></li>
+                    <li><a href="{{route('privacy-policy')}}">Privacy Policy</a></li>
+                    <li><a href="{{route('terms-conditions')}}">Terms & Conditions</a></li>
                   </ul>
                 </div>
                 <div class="col-md-6 col-lg-4">
                   <h3 class="footer-heading mb-4">USEFUL LINKS</h3>
                   <ul class="list-unstyled">
-                    <li><a href="#">Sell online</a></li>
-                    <li><a href="#">Features</a></li>
-                    <li><a href="#">Shopping cart</a></li>
-                    <li><a href="#">Store builder</a></li>
+                    <li><a href="{{route('ring-designs')}}">Ring Designs  </a></li>
+                    <li><a href="{{route('pendant-designs')}}">Pendant Designs </a></li>
+                    <li><a href="{{route('products')}}">Shopping cart</a></li>
+                    <li><a href="{{route('category-page')}}">Store builder</a></li>
                   </ul>
                 </div>
                
@@ -421,6 +424,8 @@
     <script src="{{asset('js/aos.js')}}"></script>
   
     <script src="{{asset('js/main.js')}}"></script>
+    <script src="{{asset('js/wow.js')}}"></script>
+    
     <script>
       $(document).ready(function() {
       "use strict";
@@ -455,5 +460,7 @@
       menuButton.click();
   };
       </script>
+
+
     </body>
   </html>

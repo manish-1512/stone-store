@@ -4,13 +4,13 @@
 
   <div class="page-banner">
        <img src="{{asset('images/about_banner.jpg')}}" class="img-fluid" width="100%" alt="Responsive image">
-       <h2 class="banner-text"> Ring Designs </h2>
+       <h2 class="banner-text title-font "> Ring Designs </h2>
   </div>
 
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 mb-0"><a href="{{route('home')}}">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Ring  Designs</strong></div>
+          <div class="col-md-12 mb-0"><a href="{{route('home')}}">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black ">Ring  Designs</strong></div>
         </div>
       </div>
     </div>  
@@ -26,8 +26,13 @@
                 <section class="mt-5" id="features">
 
                   <!-- Secion heading -->
-                  <h1 class="text-center  mt-5 mb-5 pt-5 mb-3 drk-grey-text wow fadeIn" data-wow-delay="0.2s">
+                  <h1 class="text-center  mt-5 mb-5 pt-5 mb-3 drk-grey-text wow fadeIn title-font" data-wow-delay="0.2s">
                   Ring Designs
+                  <div  class="mt-4"style="height:2px;width:100% ;background: rgb(121,56,56);
+          background: radial-gradient(circle, rgba(121,56,56,1) 10%, rgba(255,255,255,1) 50%);
+          ">
+  
+          </div>
                   </h1>
 
                   <!-- Section description -->

@@ -16,7 +16,12 @@
 
     <div class="site-section">
       <div class="container">
-        <h2 class="text-center about title-font mb-4"> Contact US </h2>
+        <h1 class="text-center about title-font mb-4"> Contact US </h1>
+        <div  class="mt-4 mb-5 "style="height:2px;width:100% ;background: rgb(121,56,56);
+        background: radial-gradient(circle, rgba(121,56,56,1) 10%, rgba(255,255,255,1) 50%);
+        ">
+
+        </div>
         <div class="row">
           <div class="col-md-12">
             <h2 class="h3 mb-3 title-font">Get In Touch</h2>

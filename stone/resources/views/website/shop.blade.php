@@ -117,12 +117,12 @@
                 <div class="col-sm-6 col-lg-3 mb-4" data-aos="fade-up">
                   <div class="block-4 text-center border">
                     <figure class="block-4-image position-relative">
-                      <a href="shop-sasasasingle.html"><img src="images/most3.jpg"  alt="Image placeholder" class="img-fluid"></a>
+                      <a href="{{route('product-details')}}"><img src="images/most3.jpg"  alt="Image placeholder" class="img-fluid"></a>
 
                       <a href="asaasasas" class="position-absolute" style="top:5px;right:1px"><span class="p-1"><i class="fa fa-heart text-white fa-2x" > </span></i></a>
                     </figure>
                     <div class="block-4-text p-4">
-                      <h5><a href="">Blue Sapphire (Neelam) Sri Lanka- 8.62 Carat (9.50 Ratti)</a></h5>
+                      <h5><a href="{{route('product-details')}}">Blue Sapphire (Neelam) Sri Lanka- 8.62 Carat (9.50 Ratti)</a></h5>
                       <p class="text-primary font-weight-bold"> $50 </p>
                     </div>
                   </div>

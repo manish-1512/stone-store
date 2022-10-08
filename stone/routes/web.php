@@ -25,13 +25,12 @@ Route::get('/privacy-policy', function () {  return view('website.privacy-policy
 Route::get('/ring-designs', function () {  return view('website.ring-designs');})->name('ring-designs');
 Route::get('/pendant-designs', function () {  return view('website.pendant-designs');})->name('pendant-designs');
 
-Route::get('/pendant-designs', function () {  return view('website.pendant-designs');})->name('pendant-designs');
 Route::get('/products', function () {  return view('website.shop');})->name('products');
+Route::get('/products-details', function () {  return view('website.product-details');})->name('product-details');
+
 Route::get('/category-page', function () {  return view('website.categories');})->name('category-page');
 
-Route::get('/login', function () {  return view('website.login');})->name('login');
 
-Route::get('/register', function () {  return view('website.login');})->name('register');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

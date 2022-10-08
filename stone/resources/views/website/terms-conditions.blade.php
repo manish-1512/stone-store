@@ -18,6 +18,11 @@
     <div class="site-section border-bottom" data-aos="fade">
       <div class="container">
         <h2 class="text-center about title-font mb-4"> Terms & Conditions </h2>
+        <div  class="mt-4 mb-5 "style="height:2px;width:100% ;background: rgb(121,56,56);
+        background: radial-gradient(circle, rgba(121,56,56,1) 10%, rgba(255,255,255,1) 50%);
+        ">
+
+        </div>
           @for($i=1;$i<8;$i++)
           <p class="mb-4"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius repellat, dicta at laboriosam, nemo exercitationem itaque eveniet architecto cumque, deleniti commodi molestias repellendus quos sequi hic fugiat asperiores illum. Atque, in, fuga excepturi corrupti error corporis aliquam unde nostrum quas. </p>
           @endfor

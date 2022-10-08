@@ -4,7 +4,7 @@
 
   <div class="page-banner">
        <img src="{{asset('images/about_banner.jpg')}}" class="img-fluid" width="100%" alt="Responsive image">
-       <h2 class="banner-text"> Pendant Designs </h2>
+       <h2 class="banner-text title-font"> Pendant Designs </h2>
   </div>
 
     <div class="bg-light py-3">
@@ -27,11 +27,15 @@
                 <section class="mt-5" id="features">
 
                   <!-- Secion heading -->
-                  <h1 class="text-center  mt-5 mb-5 pt-5 mb-3 drk-grey-text wow fadeIn" data-wow-delay="0.2s">
+                  <h1 class="text-center  mt-4 mb-3 pt-5 mb-3 drk-grey-text title-font  wow fadeIn" data-wow-delay="0.2s">
                     Pendant Designs
 
                   </h1>
-
+                  <div  class="mt-4 mb-5 "style="height:2px;width:100% ;background: rgb(121,56,56);
+          background: radial-gradient(circle, rgba(121,56,56,1) 10%, rgba(255,255,255,1) 50%);
+          ">
+  
+          </div>
                   <!-- Section description -->
                   {{-- <p class="text-center text-uppercase grey-text font-weight-bold mb-5 pb-4 wow fadeIn" data-wow-delay="0.2s">We
                     serve the best coffee</p> --}}

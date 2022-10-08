@@ -54,18 +54,18 @@
     </div>   --}}
 
 
-    <div class="container">
+    <div class="container ">
       <!-- Section: Features v.4 -->
       <section class="mt-5" id="features">
 
         <!-- Secion heading -->
-        <h1 class="text-center  mt-5 mb-5 pt-5 mb-3 drk-grey-text wow fadeIn title-font" data-wow-delay="0.2s">
+        <h1 class="text-center  mt-5 mb-5 pt-5 mb-3 drk-grey-text  title-font"  data-aos="fade-down"  >
           <em>EXPERIENCE THE POWER & BENEFITS OF OUR GEMSTONES</em>
         </h1>
 
         <section>
 
-          <h2 class="text-center  mt-5 mb-5 pt-5 mb-4 drk-grey-text wow fadeIn title-font " data-wow-delay="0.2s">
+          <h2 class="text-center  mt-5 mb-5 pt-5 mb-4 drk-grey-text  title-font " data-aos="fade-down" >
             Precious Gemstone
             <div  class="mt-2"style="height:2px;width:100% ;background: rgb(121,56,56);
             background: radial-gradient(circle, rgba(121,56,56,1) 1%, rgba(255,255,255,1) 50%);
@@ -78,14 +78,14 @@
           
   
           <!-- Grid row -->
-          <div class="row wow fadeIn" data-wow-delay="0.4s">
+          <div class="row " data-wow-delay="0.4s">
   
             <!-- Grid column -->
             <div class="col-md-4">
   
               <!-- Grid row -->
               <div class="row text-center pb-5">
-                <div class="col-md-12">
+                <div class="col-md-12  " data-aos="zoom-in-up">
                   <img src="{{asset('images/1.png')}}" alt="" height="120px" width="120px">
                   <h6 class="">BLUE SAPPHIRE</h6>
                   {{-- <p class="grey-text">Reprehenderit maiores nam, aperiam minima assumenda deleniti hic.</p> --}}
@@ -95,7 +95,7 @@
   
               <!-- Grid row -->
               <div class="row text-center pb-5">
-                <div class="col-md-12">
+                <div class="col-md-12 " data-aos="zoom-in-up">
                   <img src="{{asset('images/2.png')}}" alt="" height="120px" width="120px">
                   <h6 class="">EMERALD</h6>
                   {{-- <p class="grey-text">Reprehenderit maiores nam, aperiam minima assumenda deleniti hic.</p> --}}
@@ -107,7 +107,7 @@
             <!-- Grid column -->
   
             <!-- Grid column -->
-            <div class="col-md-4 pb-3 flex-center">
+            <div class="col-md-4 pb-3 flex-center  animate__zoomIn" data-aos="zoom-in-up">
               {{-- <img src="https://mdbootstrap.com/img/Photos/Others/coffee.jpg" alt="" class="z-depth-0 img-fluid"> --}}
               <img src="{{asset('images/3.png')}}" alt="" class="z-depth-0 img-fluid">
               <h6 class=" text-center mt-3">RUBY</h6>
@@ -119,7 +119,7 @@
   
               <!-- Grid row -->
               <div class="row text-center pb-5">
-                <div class="col-md-12">
+                <div class="col-md-12 animate__animated animate__backInRight" data-aos="zoom-in-up">
                   <img src="{{asset('images/5.jpg')}}" alt="" height="120px" width="120px">
                   <h6 class="">YELLOW SAPPHIRE</h6>
                   {{-- <p class="grey-text">Reprehenderit maiores nam, aperiam minima assumenda deleniti hic.</p> --}}
@@ -129,7 +129,7 @@
   
               <!-- Grid row -->
               <div class="row text-center pb-5">
-                <div class="col-md-12">
+                <div class="col-md-12 animate__animated animate__backInRight" data-aos="zoom-in-up">
                   <img src="{{asset('images/4.png')}}" alt="" height="120px" width="120px">
                   <h6 class="">OPEL</h6>
                   {{-- <p class="grey-text">Reprehenderit maiores nam, aperiam minima assumenda deleniti hic.</p> --}}
@@ -149,7 +149,7 @@
   
               <div class="collapse" id="collapseExample">
                  <!-- Grid row -->
-          <div class="row wow fadeIn" data-wow-delay="0.4s">
+          <div class="row " data-wow-delay="0.4s">
   
             <!-- Grid row -->
             <div class="col-6 col-md-4 col-md-3 text-center pb-5">
@@ -221,7 +221,7 @@
             <div class="container">
               <div class="row justify-content-center">
                 <div class="col-md-7 site-section-heading text-center">
-                  <h2 class="text-center  mt-5 mb-5 pt-5 mb-4 drk-grey-text wow fadeIn title-font " data-wow-delay="0.2s">
+                  <h2 class="text-center  mt-5 mb-5 pt-5 mb-4 drk-grey-text  title-font " >
                     Semi- Precious Gemstone
                     <div  class="mt-2"style="height:2px;width:100% ;background: rgb(121,56,56);
                     background: radial-gradient(circle, rgba(121,56,56,1) 10%, rgba(255,255,255,1) 80%);
@@ -261,9 +261,8 @@
 
     </div>
 
-
     {{--  --}}
-    <img src="{{asset('images/banner1.png')}}" class="img-fluid" alt="">
+    <img src="{{asset('images/banner1.png')}}" class="img-fluid" data-aos="fade-up" alt="">
 
 
     <div class="container-fluid  rudraksha_section ">
@@ -296,7 +295,7 @@
                   <div class="row text-right">
                     @for($i=1;$i<10;$i++)
                     
-                    <div class="col-4">
+                    <div class="col-4 " data-aos="zoom-in"  data-aos-delay="300" >
                      <a href="">
                       <div class="col-md-12 text-center">
                         <img src="{{asset('images/RUDRAKSHA.png')}}" alt="" height="120px" width="120px">
@@ -321,7 +320,7 @@
       <section class="mt-5" id="features">
 
         <!-- Secion heading -->
-        <h2 class="text-center  mt-5 mb-5 pt-5 mb-4 drk-grey-text wow fadeIn title-font " data-wow-delay="0.2s">
+        <h2 class="text-center  mt-5 mb-5 pt-5 mb-4 drk-grey-text  title-font " data-wow-delay="0.2s">
           PEARL COLLECTION
           <div  class="mt-2"style="height:2px;width:100% ;background: rgb(121,56,56);
           background: radial-gradient(circle, rgba(121,56,56,1) 10%, rgba(255,255,255,1) 80%);
@@ -331,11 +330,11 @@
         </h2>
 
         <!-- Section description -->
-        {{-- <p class="text-center text-uppercase grey-text font-weight-bold mb-5 pb-4 wow fadeIn" data-wow-delay="0.2s">We
+        {{-- <p class="text-center text-uppercase grey-text font-weight-bold mb-5 pb-4 " data-wow-delay="0.2s">We
           serve the best coffee</p> --}}
 
         <!-- Grid row -->
-        <div class="row wow fadeIn" data-wow-delay="0.4s">
+        <div class="row " data-wow-delay="0.4s">
 
 
           @for($i=1;$i<9;$i++)
@@ -365,7 +364,7 @@
       <div class="container-fluid jewellery_collection">
 
            <!-- Secion heading -->
-        <h2 class="text-center  mt-5 mb-5 pt-5 mb-4 drk-grey-text wow fadeIn title-font " data-wow-delay="0.2s">
+        <h2 class="text-center  mt-5 mb-5 pt-5 mb-4 drk-grey-text  title-font " data-wow-delay="0.2s">
           jewellery COLLECTION
           <div  class="mt-4"style="height:2px;width:100% ;background: rgb(121,56,56);
           background: radial-gradient(circle, rgba(121,56,56,1) 10%, rgba(255,255,255,1) 50%);
@@ -506,3 +505,5 @@
 
     
     @endsection
+
+   
