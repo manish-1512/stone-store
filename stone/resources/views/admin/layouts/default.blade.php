@@ -12,13 +12,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="{{asset('admin/plugins/fontawesome-free/css/all.min.css')}}">
+  {{-- <link rel="stylesheet" href="{{asset('admin/plugins/fontawesome-free/css/all.min.css')}}"> --}}
+
+  
 
   <link rel="stylesheet" href="{{asset('admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
 
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('admin/dist/css/adminlte.min.css')}}">
 </head>
@@ -181,6 +183,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="info">
           <a href="#" class="d-block">Alexander Pierce</a>
         </div>
+        <form method="POST" action="{{ route('logout') }}">
+          @csrf
+
+          <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900">
+              {{ __('Log Out') }}
+          </button>
+      </form>
       </div>
 
       <!-- SidebarSearch Form -->
@@ -200,25 +209,63 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
+
+          <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa-solid  nav-icon fa-house"></i>
+                  <p> Dashboard </p>
+                </a>
+          </li>     
+          <li class="nav-item ">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class=" nav-icon fa-solid fa-bag-shopping"></i>
               <p>
-                Starter Pages
-                <i class="right fas fa-angle-left"></i>
+                E-Commerce
+                <i class="right fa fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="#" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
+                <a href="#" class="nav-link ">
+                  <i class=" nav-icon fa-solid fa-users"></i>
+                  <p>Customers</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link ">
+                  <i class=" nav-icon fa-solid fa-chart-line"></i>
+                  <p>Report</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
+                  <i class=" nav-icon fa-solid fa-cart-shopping"></i>
+                  <p>Orders</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class=" nav-icon fa-solid fa-camera"></i>
+                  <p>Products</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa-solid nav-icon fa-box-archive"></i>
+                  <p>Product categories</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa-solid fa-gift nav-icon"></i>
+                  <p>Discount Coupon</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa-solid nav-icon fa-comments"></i>
+                  <p>Reviews</p>
                 </a>
               </li>
             </ul>
@@ -227,10 +274,90 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
+                Pages 
+               
               </p>
             </a>
+          </li>
+          
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-mobile"></i>
+              <p>
+                Contact
+           
+              </p>
+            </a>
+          </li>
+          
+          <li class="nav-item ">
+            <a href="#" class="nav-link ">
+              <i class="fa-regular nav-icon fa-credit-card"></i>
+              <p>
+                Payments
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              
+             
+           
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa-solid nav-icon fa-money-bill-transfer"></i>
+                  <p>Transactions</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
+          <li class="nav-item ">
+            <a href="#" class="nav-link ">
+              <i class="fa-solid nav-icon  fa-sliders"></i>
+              <p>
+                Banner &  Slider
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              
+             
+           
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  
+                  <p>Slider</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  
+                  <p>Banner</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
+          <li class="nav-item ">
+            <a href="#" class="nav-link ">
+              <i class=" nav-icon fa-solid fa-pencil"></i>
+              <p>
+                Appearance
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              
+             
+           
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa-regular nav-icon fa-eye"></i>
+                  <p>Theme Options</p>
+                </a>
+              </li>
+              
+            </ul>
           </li>
         </ul>
       </nav>
@@ -291,6 +418,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- AdminLTE App -->
 <script src="{{asset('admin/dist/js/adminlte.min.js')}}"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
+
+</script>
 
 
 <script>

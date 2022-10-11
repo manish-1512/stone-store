@@ -73,9 +73,10 @@ Route::namespace('App\Http\Controllers\Admin')->prefix('admin')->name('admin.')-
 
 
     Route::middleware('admin')->group(function(){
-
         Route::get('dashboard',function(){return view('admin.dashboard'); });
-        Route::post('logout','Auth\AuthenticatedSessionController@destroy')->name('logout');
+        Route::get('settings',function(){return view('admin.settings.index'); });
+        
+        Route::get('logout','Auth\AuthenticatedSessionController@destroy')->name('logout');
     });
 
 
