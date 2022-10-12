@@ -73,10 +73,18 @@ Route::namespace('App\Http\Controllers\Admin')->prefix('admin')->name('admin.')-
 
 
     Route::middleware('admin')->group(function(){
-        Route::get('dashboard',function(){return view('admin.dashboard'); });
-        Route::get('settings',function(){return view('admin.settings.index'); });
-        
+
+        Route::get('dashboard',function(){return view('admin.dashboard'); })->name('dashboard');
         Route::get('logout','Auth\AuthenticatedSessionController@destroy')->name('logout');
+
+        Route::get('settings','SettingController@index')->name('settings.show');
+        Route::post('settings','SettingController@update')->name('settings.update');
+
+        Route::get('cms-pages','CmsPageController@index')->name('cms.show');
+
+        Route::get('cms-pages/edit/{slug}','CmsPageController@edit')->name('cms.edit');
+        Route::post('cms-pages/update','CmsPageController@update')->name('cms.update');
+        
     });
 
 
