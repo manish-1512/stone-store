@@ -255,7 +255,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('admin.categories.show')}}" class="nav-link">
                   <i class="fa-solid nav-icon fa-box-archive"></i>
                   <p>Product categories</p>
                 </a>
@@ -401,7 +401,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       Anything you want
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; {{date('Y')}} </strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->

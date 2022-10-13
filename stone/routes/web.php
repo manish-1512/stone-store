@@ -84,6 +84,19 @@ Route::namespace('App\Http\Controllers\Admin')->prefix('admin')->name('admin.')-
 
         Route::get('cms-pages/edit/{slug}','CmsPageController@edit')->name('cms.edit');
         Route::post('cms-pages/update','CmsPageController@update')->name('cms.update');
+
+
+        //e-commerce group 
+        Route::prefix('categories')->name('categories.')->group(function(){
+
+        Route::get('/','CategoryController@index')->name('show');
+
+        Route::post('/save','CategoryController@store')->name('store');
+
+        });
+
+
+
         
     });
 

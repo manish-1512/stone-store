@@ -21,7 +21,7 @@
   </div>
   <!-- /.content-header -->
 
-  <section class="content p-3">
+  <section class="content p-lg-5 p-2">
     <div class="card card-primary">
       <div class="card-header">
         <h3 class="card-title">Edit</h3>
@@ -64,9 +64,7 @@
                       </div>
                       <!-- /.card-header -->
                       <div class="card-body">
-                        <textarea id="summernote2" name="body">
-                          Place <em>some</em> <u>text</u> <strong>here</strong>
-                        </textarea>
+                        <textarea id="editor1" name="body">{{$data->body}}</textarea>
                       </div>
                       <div class="card-footer">
                         
@@ -93,7 +91,8 @@
           <div class="form-group">
             <label for="exampleInputEmail1"></label>
             <button type="submit" class="btn btn-success">Update </button>
-            <button  class="btn btn-danger">Cancle </button>
+            <a  class="btn btn-danger" href="{{route('admin.cms.show')}}" >Cancle </a>
+            <a  class="btn btn-danger" href="{{route('admin.cms.show')}}" >Cancle </a>
         </div>
           
         </div>
@@ -109,18 +108,13 @@
 
 @endsection
 @section('scripts')
-
+<script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
 <script>
-  $(function () {
-    // Summernote
-    $('#summernote2').summernote()
-
-    // CodeMirror
-    CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
-      mode: "htmlmixed",
-      theme: "monokai"
-    });
-  })
+  ClassicEditor
+      .create( document.querySelector( '#editor1' ) )
+      .catch( error => {
+          console.error( error );
+      } );
 </script>
 
 @endsection
