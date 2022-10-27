@@ -90,8 +90,10 @@ Route::namespace('App\Http\Controllers\Admin')->prefix('admin')->name('admin.')-
         Route::prefix('categories')->name('categories.')->group(function(){
 
         Route::get('/','CategoryController@index')->name('show');
-
         Route::post('/save','CategoryController@store')->name('store');
+        Route::get('/edit/{id}','CategoryController@edit')->name('edit');
+        Route::post('/update/{id}','CategoryController@update')->name('update');
+        Route::get('/delete/{id}','CategoryController@destroy')->name('delete');
 
         });
 

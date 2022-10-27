@@ -29,10 +29,11 @@ class CategoryController extends Controller
     public function index()
     {
 
-        $categories =  $this->category_model->get();
-        $top_categories = $this->category_model->where('parent_id',null)->get();
+        $categories =  $this->category_model->select('categories.name','categories.id','categories.parent_id')->paginate(10);
 
-        return view('admin.categories.index',compact('categories','top_categories'));
+        $all_categories =  $this->category_model->get();
+
+        return view('admin.categories.index',compact('categories','all_categories'));
     }
 
     /**
@@ -51,11 +52,10 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request ,$id=0)
     {
 
-        // echo "<pre>";
-        // print_r($request->all());die;
+        
 
 
         $request->validate([
@@ -69,7 +69,7 @@ class CategoryController extends Controller
          $this->category_model->parent_id = $request->parent_id;
          $this->category_model->hindi_name = $request->hindi_name;
          $this->category_model->order = $request->order;
-         $this->category_model->banner = $request->banner;
+       
          $this->category_model->short_description = $request->short_description;
          $this->category_model->description = $request->description;
 
@@ -83,9 +83,7 @@ class CategoryController extends Controller
                                          $this->category_model->banner = $file_name;
          
                                      } 
-
             $this->category_model->save();  
-            
             return redirect()->back();
 
 
@@ -110,7 +108,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = $this->category_model->find($id);
+        $all_categories =  $this->category_model->get();
+
+        return view('admin.categories.edit',compact('category','all_categories'));
     }
 
     /**
@@ -122,7 +123,40 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+
+        $request->validate([
+            'name' => 'required|string|unique:categories,name,'.$id,
+            'order' => 'required|integer',
+            'banner' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+         ]); 
+
+         $category = $this->category_model->find($id);
+
+         $category->name = $request->name;
+         $category->slug =  Str::slug($request->name);
+         $category->parent_id = $request->parent_id;
+         $category->hindi_name = $request->hindi_name;
+         $category->order = $request->order;
+         
+         $category->short_description = $request->short_description;
+         $category->description = $request->description;
+
+
+          if($request->hasFile('banner')){
+         
+                                         $image =  $request->file('banner');
+                                         $extension = $image->getClientOriginalExtension();
+                                         $file_name = time().'.'.$extension;
+                                         $image->move(CATEGORY_BANNER,$file_name);
+                                         $category->banner = $file_name;
+         
+                                     } 
+
+            $category->save();  
+            
+            return redirect()->back();
+        
     }
 
     /**
@@ -133,6 +167,17 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = $this->category_model->where('parent_id',$id)->get();
+
+        if(count($category) > 0 ){
+
+            return redirect()->back()->with('delete_error',"you can not delete a parent category ? first delete a child category");
+
+        }else{
+            
+            $this->category_model->where('id',$id)->delete();
+            return redirect()->back();
+
+        }
     }
 }

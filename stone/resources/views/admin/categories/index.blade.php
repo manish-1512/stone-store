@@ -30,83 +30,65 @@
 
        
       <div class="col-sm-6 bg-light ">
-        <div id="accordion" class="myaccordion">
-
-          @foreach($top_categories as $category)
-
-          <div class="card">
-            <div class="card-header" id="{{$category->slug}}2">
-              <div class="d-flex  justify-content-between">
-                  <h2 class="mb-0">
-                   
-                    <button class="d-flex align-items-center justify-content-between btn btn-link collapsed" data-toggle="collapse" data-target="#{{$category->slug}}" aria-expanded="false" aria-controls="{{$category->slug}}">
-                      {{$category->name}}
-                      <span class="fa-stack fa-sm">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
-                      </span>
-                    
-                    </button>
-                   
-                  </h2>
-                  <a href="#"> <i class="fa fa-edit"></i></a>
-
-              </div>
-            </div>
-            <div id="{{$category->slug}}" class="collapse" aria-labelledby="{{$category->slug}}2" data-parent="#accordion">
-              <div class="card-body">
-                  {{-- inner  --}}
-                          <?php $sub_category =  DB::table('categories')->where('parent_id',$category->id)->get();?>
-
-                          @if( count($sub_category) > 0)
-
-                          @foreach($sub_category as $sub_cat)
-
-                          <div class="card">
-                            <div class="card-header" id="{{$category->slug}}3">
-                              <div class="d-flex  justify-content-between">
-                                  <h2 class="mb-0">
-                                   
-                                    <button class="d-flex align-items-center justify-content-between btn btn-link collapsed" data-toggle="collapse" data-target="#{{$sub_cat->slug}}" aria-expanded="false" aria-controls="{{$sub_cat->slug}}">
-                                      {{$sub_cat->name}}
-                                      <span class="fa-stack fa-sm">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
-                                      </span>
-                                    
-                                    </button>
-                                   
-                                  </h2>
-                                  <a href="#"> <i class="fa fa-edit"></i></a>
-                
-                              </div>
-                            </div>
-                            <div id="{{$sub_cat->slug}}" class="collapse" aria-labelledby="{{$category->slug}}3" data-parent="#accordion">
-                              <div class="card-body">
-                                  {{-- inner  --}}
-                                          
-                
-                                {{-- inner --}}
-                              </div>
-                            </div>
-                          </div>
-                
-                          @endforeach
-                
-
-                          @endif
-
-                {{-- inner --}}
-              </div>
-            </div>
+        
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Categories  </h3>
           </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table id="example1" class="table table-bordered">
+              <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Parent</th>
+                <th>Action</th>
+                
+              </tr>
+              </thead>
+              <tbody>
 
-          @endforeach
+               @foreach ($categories as $item)
+               <tr>
+                <td>{{$item->id}}</td>
+                <td>{{$item->name}}</td>
+                <td>{{$item->parent_id}}</td>
+                <td> <a href="{{route('admin.categories.edit',$item->id)}}" class="btn btn-outline-info " > <i class="fas fa-edit"></i> </a>
+                  <a href="{{route('admin.categories.delete',$item->id)}}" class="btn btn-outline-danger " > <i class="fas fa-trash"></i> </a> 
+                </td>
+              
+                
+              </tr>
+               @endforeach 
 
-           
-           
+              
+             
+
+              </tbody>
+              <tfoot>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Parent</th>
+                <th>Action</th>
+                
+                
+              </tr>
+              </tfoot>
+            </table>
           </div>
-      </div><!-- /.col -->
+          <!-- /.card-body -->
+          <div>
+            {{ $categories->onEachSide(5)->links('pagination::bootstrap-4') }}
+          </div>
+        </div>
+
+
+        
+      </div>
+      
+      <!-- /.col -->
       <div class="col-sm-6 bg-light">
             
         <div class="p-4 border">
@@ -131,7 +113,7 @@
               <label for="exampleInputEmail1">Parent Category</label>
                 <select name="parent_id" id="" class="form-control"  >
                     <option value="">NO Parent</option>
-                    @foreach ($categories as $item)
+                    @foreach ($all_categories as $item)
                     <option value="{{$item->id}}">{{$item->name}}</option>
                     @endforeach
                 </select>
@@ -153,6 +135,7 @@
               @if ($errors->has('banner'))
               <span class="error text-danger">{{ $errors->first('banner') }}</span>
              @endif
+
             </div>
             <div class="form-group">
               <label >Short Description</label>
