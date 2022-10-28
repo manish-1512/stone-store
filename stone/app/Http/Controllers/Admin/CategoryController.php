@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
+use App\Models\CategoryLabelModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -18,9 +19,6 @@ class CategoryController extends Controller
         $this->category_model = new Categories();
     }
 
-
-
-
     /**
      * Display a listing of the resource.
      *
@@ -28,12 +26,14 @@ class CategoryController extends Controller
      */
     public function index()
     {
-
-        $categories =  $this->category_model->select('categories.name','categories.id','categories.parent_id')->paginate(10);
+        
+        $categories =  $this->category_model->select('categories.name','categories.id','sub_cat.name as parent_id')->leftJoin('categories as sub_cat','categories.parent_id','sub_cat.id')->orderBy('categories.order')->paginate(10);
+        
+        $category_label = CategoryLabelModel::get();
 
         $all_categories =  $this->category_model->get();
 
-        return view('admin.categories.index',compact('categories','all_categories'));
+        return view('admin.categories.index',compact('categories','category_label','all_categories'));
     }
 
     /**
@@ -54,19 +54,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request ,$id=0)
     {
-
-        
-
-
         $request->validate([
             'name' => 'required|string|unique:categories',
             'order' => 'required|integer',
             'banner' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'nullable|image|mimes:png|max:1048',
+            'label_id' => 'nullable|integer',
          ]); 
 
          $this->category_model->name = $request->name;
          $this->category_model->slug =  Str::slug($request->name);
          $this->category_model->parent_id = $request->parent_id;
+         $this->category_model->label_id = $request->label_id;
          $this->category_model->hindi_name = $request->hindi_name;
          $this->category_model->order = $request->order;
        
@@ -82,7 +81,16 @@ class CategoryController extends Controller
                                          $image->move(CATEGORY_BANNER,$file_name);
                                          $this->category_model->banner = $file_name;
          
-                                     } 
+                 } 
+            if($request->hasFile('image')){
+    
+            $cat_image =  $request->file('image');
+            $extension = $cat_image->getClientOriginalExtension();
+            $file_name = time().'.'.$extension;
+            $cat_image->move(CATEGORY_IMAGE,$file_name);
+            $this->category_model->image = $file_name;
+
+        }        
             $this->category_model->save();  
             return redirect()->back();
 
@@ -110,8 +118,9 @@ class CategoryController extends Controller
     {
         $category = $this->category_model->find($id);
         $all_categories =  $this->category_model->get();
+        $category_label = CategoryLabelModel::get();
 
-        return view('admin.categories.edit',compact('category','all_categories'));
+        return view('admin.categories.edit',compact('category','category_label','all_categories'));
     }
 
     /**
@@ -129,6 +138,8 @@ class CategoryController extends Controller
             'name' => 'required|string|unique:categories,name,'.$id,
             'order' => 'required|integer',
             'banner' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'nullable|image|mimes:png|max:1048',
+            'label_id' => 'nullable|integer',
          ]); 
 
          $category = $this->category_model->find($id);
@@ -136,6 +147,7 @@ class CategoryController extends Controller
          $category->name = $request->name;
          $category->slug =  Str::slug($request->name);
          $category->parent_id = $request->parent_id;
+         $category->label_id = $request->label_id;
          $category->hindi_name = $request->hindi_name;
          $category->order = $request->order;
          
@@ -152,6 +164,16 @@ class CategoryController extends Controller
                                          $category->banner = $file_name;
          
                                      } 
+
+            if($request->hasFile('image')){
+
+            $cat_image =  $request->file('image');
+            $extension = $cat_image->getClientOriginalExtension();
+            $file_name = time().'.'.$extension;
+            $cat_image->move(CATEGORY_IMAGE,$file_name);
+            $category->image = $file_name;
+
+        }                          
 
             $category->save();  
             

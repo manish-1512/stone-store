@@ -16,9 +16,12 @@ use App\Http\Controllers\Auth\GoogleSocialiteController;
 
 //################################################################ website  route start here #################################################################
  
- 
- Route::get('/', function () {  return view('website.index');})->name('home');
+Route::namespace('App\Http\Controllers\Website')->group(function(){
 
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/category-page/{slug}','CategoryController@index')->name('categorypage');
+
+    });
 
 Route::get('/about', function () {  return view('website.about');})->name('about');
 Route::get('/contact', function () {  return view('website.contact');})->name('contact');
@@ -29,7 +32,7 @@ Route::get('/ring-designs', function () {  return view('website.ring-designs');}
 Route::get('/pendant-designs', function () {  return view('website.pendant-designs');})->name('pendant-designs');
 Route::get('/products', function () {  return view('website.shop');})->name('products');
 Route::get('/products-details', function () {  return view('website.product-details');})->name('product-details');
-Route::get('/category-page', function () {  return view('website.categories');})->name('category-page');
+
 Route::get('/cart', function () {  return view('website.cart');})->name('cart');
 Route::get('/checkout', function () {  return view('website.checkout');})->name('checkout');
 Route::get('/thank-you', function () {  return view('website.thankyou');})->name('thankyou');

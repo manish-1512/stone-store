@@ -11,4 +11,8 @@ class Categories extends Model
     protected $table = 'categories';
 
     protected $fillable = ['name', 'parent_id', 'hindi_name','order','banner','short_description','description','slug']; 
+
+    function getParentIdAttribute($value){
+        return ($value == null)? 'No Parent category': $value;
+    }
 }

@@ -61,6 +61,17 @@
                 </select>
                
             </div>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Category Label</label>
+                <select name="label_id" id="" class="form-control"  >
+                    <option value="">NO Label</option>
+                   @foreach ($category_label as $item)
+                    <option value="{{$item->id}}" {{ ($category->label_id != null  &&  $category->label_id == $item->id  )? 'selected' : '';   }}>{{$item->label}}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <div class="form-group">
               <label for="exampleInputFile">Banner </label>
               <div class="input-group">
@@ -78,6 +89,24 @@
               <span class="error text-danger">{{ $errors->first('banner') }}</span>
              @endif
              <img src="{{asset(CATEGORY_BANNER)}}/{{$category->banner}}" class="mt-2" alt="" height="120">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputFile">image </label>
+              <div class="input-group">
+                <div class="custom-file">
+                  <input type="file" name="image" class="custom-file-input" id="exampleInputFile">
+                  <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                
+                </div>
+                <div class="input-group-append">
+                  <span class="input-group-text">Upload </span>
+                </div>
+               
+              </div>
+              @if ($errors->has('image'))
+              <span class="error text-danger">{{ $errors->first('image') }}</span>
+             @endif
+             <img src="{{asset(CATEGORY_IMAGE)}}/{{$category->image}}" class="mt-2" alt="" height="120">
             </div>
             <div class="form-group">
               <label >Short Description</label>

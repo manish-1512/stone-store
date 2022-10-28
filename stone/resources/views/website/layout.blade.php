@@ -53,7 +53,7 @@
 
             <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
               <div class="site-logo">
-                <a href="index.html" class="js-logo-clone">
+                <a href="/" class="js-logo-clone">
                   <img src="{{asset('images/logo.png')}}" alt="" height="80px">
                 </a>
               </div>
@@ -190,7 +190,7 @@
       <div class="menu-container">
         <div class="menu" >
         
-          <ul class="clearfix">
+          {{-- <ul class="clearfix">
             <li><a href="#">GEMSTONES</a></li>
             <li><a href="#">RUDRAKSHA</a>
               <ul>
@@ -297,6 +297,45 @@
                 </li>
               </ul>
             </li>
+          </ul> --}}
+
+          <ul class="clearfix">
+            @foreach ($product_categories as $top_category)
+            <li><a href="{{route('categorypage',$top_category->slug)}}"> {{$top_category->name}} </a>
+            
+              @php $second_top = DB::table('categories')->where('is_active',1)->where('parent_id',$top_category->id)->orderBy('order')->get(); @endphp
+
+              @if(count($second_top) > 0)
+
+              <ul>
+                @foreach ($second_top as $second)
+                <li><a href="#">{{$second->name}}</a>
+
+                  @php $third_lavel = DB::table('categories')->where('is_active',1)->where('parent_id',$second->id)->orderBy('order')->get(); @endphp
+                   @if(count($third_lavel) > 0)
+                   <ul> 
+                   @foreach ($third_lavel as $third)
+                    <li><a href="{{route('products')}}">{{$third->name}}</a>
+                   @endforeach 
+                  </ul> 
+                  @endif
+                </li>
+               @endforeach 
+
+                <li><a href="#">Something</a>
+                  <ul>
+                    <li><img src="https://placeimg.com/300/200/nature"></li>
+                  </ul>
+                </li>
+              </ul>
+
+              @endif
+            
+            
+            </li>
+            @endforeach
+            
+           
           </ul>
         </div>
       </div>
@@ -358,7 +397,7 @@
                     <li><a href="{{route('ring-designs')}}">Ring Designs  </a></li>
                     <li><a href="{{route('pendant-designs')}}">Pendant Designs </a></li>
                     <li><a href="{{route('products')}}">Shopping cart</a></li>
-                    <li><a href="{{route('category-page')}}">Store builder</a></li>
+                   
                   </ul>
                 </div>
                
