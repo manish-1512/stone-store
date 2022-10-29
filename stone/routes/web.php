@@ -19,18 +19,20 @@ use App\Http\Controllers\Auth\GoogleSocialiteController;
 Route::namespace('App\Http\Controllers\Website')->group(function(){
 
     Route::get('/', 'HomeController@index')->name('home');
-    Route::get('/category-page/{slug}','CategoryController@index')->name('categorypage');
-
+    Route::get('/product-category/{slug}','CategoryController@index')->name('categorypage');
+    Route::get('/products/{slug}','ProductController@index')->name('products');
+    
+    Route::get('/about', 'HomeController@about')->name('about');
+    Route::get('/contact', 'HomeController@contactUs')->name('contact');
+    Route::get('/terms-conditions','HomeController@terms' )->name('terms-conditions');
+    Route::get('/privacy-policy','HomeController@privacyPolicy')->name('privacy-policy');
     });
 
-Route::get('/about', function () {  return view('website.about');})->name('about');
-Route::get('/contact', function () {  return view('website.contact');})->name('contact');
-Route::get('/terms-conditions', function () {  return view('website.terms-conditions');})->name('terms-conditions');
-Route::get('/privacy-policy', function () {  return view('website.privacy-policy');})->name('privacy-policy');
+
 
 Route::get('/ring-designs', function () {  return view('website.ring-designs');})->name('ring-designs');
 Route::get('/pendant-designs', function () {  return view('website.pendant-designs');})->name('pendant-designs');
-Route::get('/products', function () {  return view('website.shop');})->name('products');
+
 Route::get('/products-details', function () {  return view('website.product-details');})->name('product-details');
 
 Route::get('/cart', function () {  return view('website.cart');})->name('cart');

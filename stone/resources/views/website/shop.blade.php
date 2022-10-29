@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="card">
-  <img src="{{asset('images/about_banner.jpg')}}" class="img-fluid" width="100%" alt="Responsive image">  
+  <img src="{{APP_PATH.CATEGORY_BANNER.$category_details->banner}}" style="height:350px" class="img-fluid" width="100%" alt="Responsive image">  
 </div>
 
     <div class="site-section">
@@ -117,7 +117,7 @@
                 <div class="col-sm-6 col-lg-3 mb-4" data-aos="fade-up">
                   <div class="block-4 text-center border">
                     <figure class="block-4-image position-relative">
-                      <a href="{{route('product-details')}}"><img src="images/most3.jpg"  alt="Image placeholder" class="img-fluid"></a>
+                      <a href="{{route('product-details')}}"><img src="{{asset('images/most3.jpg')}}"  alt="Image placeholasder" class="img-fluid"></a>
 
                       <a href="asaasasas" class="position-absolute" style="top:5px;right:1px"><span class="p-1"><i class="fa fa-heart text-white fa-2x" > </span></i></a>
                     </figure>

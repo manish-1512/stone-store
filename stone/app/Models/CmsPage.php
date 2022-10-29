@@ -9,4 +9,8 @@ class CmsPage extends Model
 {
     use HasFactory;
     protected $table = 'cms_pages';
+
+    function getNameAttribute($value){
+        return ucfirst($value);
+    }
 }

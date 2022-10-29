@@ -11,19 +11,13 @@ class CategoryController extends Controller
 {
     public function index($slug){
 
-
-
-      
-        
-        
+        $category_data =Categories::where('slug',$slug)->first();
 
         
 
-        $ids =      DB::table('categories')
-        ->whereIn('parent_id', Categories::where('parent_id', Categories::where('slug',$slug)->value('id') )->pluck('id')->toArray())
-         ->get();
+        $subcategories =   Categories::where('parent_id',$category_data->id  )->get();
 
-         echo "<pre>";
-                  print_r(  json_decode(json_encode( $ids), true));
+        return view('website.categories',compact('subcategories','category_data'));
+
     }
 }

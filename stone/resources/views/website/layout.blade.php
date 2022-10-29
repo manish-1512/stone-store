@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Shoppers &mdash; Colorlib e-Commerce Template</title>
+      <title>@yield('mytitle') </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -309,16 +309,7 @@
 
               <ul>
                 @foreach ($second_top as $second)
-                <li><a href="#">{{$second->name}}</a>
-
-                  @php $third_lavel = DB::table('categories')->where('is_active',1)->where('parent_id',$second->id)->orderBy('order')->get(); @endphp
-                   @if(count($third_lavel) > 0)
-                   <ul> 
-                   @foreach ($third_lavel as $third)
-                    <li><a href="{{route('products')}}">{{$third->name}}</a>
-                   @endforeach 
-                  </ul> 
-                  @endif
+                <li><a href="{{route('products',$second->slug)}}">{{$second->name}}</a>
                 </li>
                @endforeach 
 
@@ -396,7 +387,7 @@
                   <ul class="list-unstyled">
                     <li><a href="{{route('ring-designs')}}">Ring Designs  </a></li>
                     <li><a href="{{route('pendant-designs')}}">Pendant Designs </a></li>
-                    <li><a href="{{route('products')}}">Shopping cart</a></li>
+                    <li><a href="">Shopping cart</a></li>
                    
                   </ul>
                 </div>
