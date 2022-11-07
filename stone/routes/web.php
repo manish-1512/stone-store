@@ -104,6 +104,24 @@ Route::namespace('App\Http\Controllers\Admin')->prefix('admin')->name('admin.')-
 
 
 
+        Route::prefix('product-matrial')->name('product_matrial.')->group(function(){
+            Route::get('/','ProductMatrialController@index')->name('index');
+            Route::post('/store','ProductMatrialController@store')->name('store');
+            Route::get('/edit/{id}','ProductMatrialController@edit')->name('edit');
+              Route::post('/update/{id}','ProductMatrialController@update')->name('update');
+            Route::get('/delete/{id}','ProductMatrialController@destroy')->name('destroy');
+
+        });
+
+        //final product item 
+        Route::prefix('final-product-item')->name('final_product_item.')->group(function(){
+            
+            Route::get('/','FinalProductItem@index')->name('index');
+            Route::post('/store','FinalProductItem@store')->name('store');
+            Route::get('/edit/{id}','FinalProductItem@edit')->name('edit');
+              Route::post('/update/{id}','FinalProductItem@update')->name('update');
+            Route::get('/delete/{id}','FinalProductItem@destroy')->name('destroy');
+        });
         
     });
 
