@@ -16,7 +16,6 @@
         </div>
       </div>
     </div>  
-
     <div class="site-section border-bottom" data-aos="fade">
 
     
@@ -25,7 +24,6 @@
         <div  class="mt-4 mb-5 "style="height:2px;width:100% ;background: rgb(121,56,56);
         background: radial-gradient(circle, rgba(121,56,56,1) 10%, rgba(255,255,255,1) 50%);
         ">
-
         </div>
          <div>
           {!!$about_data->body!!}

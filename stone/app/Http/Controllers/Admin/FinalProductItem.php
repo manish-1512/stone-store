@@ -26,8 +26,7 @@ class FinalProductItem extends Controller
 
     public function index()
     {
-        $data =    $this->final_product_item_model->get();
-
+        $data =    $this->final_product_item_model->select('final_product_items.name','final_product_items.is_active','final_product_items.id','final_product_items.image','final_product_items.created_at','sub_item.name as parent_id')->leftJoin('final_product_items as sub_item','final_product_items.parent_id','sub_item.id')->get();
         return view('admin.productItem.index',compact('data'));
     }
 
@@ -95,10 +94,10 @@ class FinalProductItem extends Controller
      */
     public function edit($id)
     {
-        
+        $matrials =  $this->final_product_item_model->get();          
         $data =    $this->final_product_item_model->find($id);
 
-        return view('admin.productItem.edit',compact('data'));
+        return view('admin.productItem.edit',compact('data','matrials'));
     }
 
     /**
@@ -110,18 +109,30 @@ class FinalProductItem extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        
         $request->validate([
-            'matrial_name' => 'required|string|unique:product_matrials,matrial_name,'.$id
-         ]); 
-         
+            'name' => 'required|string|unique:final_product_items,name',
+            'image' => 'nullable|image|mimes:png|max:1048',
+         ]);
          
 
-          $product_matrial =   $this->final_product_item_model->where('id',$id)->first(); 
+          $product_item =   $this->final_product_item_model->where('id',$id)->first(); 
           
-           $product_matrial->matrial_name = $request->matrial_name;
+           $product_item->name = $request->name;
+           $product_item->parent_id = $request->parent_id;
 
-         if($product_matrial->save()){
+
+           if($request->hasFile('image')){            
+
+                    $cat_image =  $request->file('image');            
+                    $extension = $cat_image->getClientOriginalExtension();
+                    $file_name = time().'.'.$extension;
+                    $cat_image->move(FINAL_ITEM_IMAGE,$file_name);
+                    $product_item->image = $file_name;
+
+             } 
+
+         if($product_item->save()){
             return redirect()->back();
          }
 
@@ -138,5 +149,20 @@ class FinalProductItem extends Controller
     {
        $this->final_product_item_model->where('id',$id)->delete(); 
        return redirect()->back();
+    }
+
+    public function changeStatus($id){
+
+        $data =  $this->final_product_item_model->select('is_active')->where('id',$id)->first()->toArray();
+
+        $status =($data['is_active'] == '1')?'0':'1';
+
+      if($this->final_product_item_model->where('id',$id)->update(['is_active'=> $status ])){
+
+        return   redirect()->back()->with('status_update', 'The status is updated');       
+
+       }else{
+           return   redirect()->back()->with('status_not_update', 'The status is not  updated');    
+       }
     }
 }

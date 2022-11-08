@@ -105,23 +105,46 @@ Route::namespace('App\Http\Controllers\Admin')->prefix('admin')->name('admin.')-
 
 
         Route::prefix('product-matrial')->name('product_matrial.')->group(function(){
+
             Route::get('/','ProductMatrialController@index')->name('index');
             Route::post('/store','ProductMatrialController@store')->name('store');
             Route::get('/edit/{id}','ProductMatrialController@edit')->name('edit');
-              Route::post('/update/{id}','ProductMatrialController@update')->name('update');
+            Route::post('/update/{id}','ProductMatrialController@update')->name('update');
             Route::get('/delete/{id}','ProductMatrialController@destroy')->name('destroy');
+            Route::get('/status/{id}','ProductMatrialController@changeStatus')->name('status');
 
         });
 
         //final product item 
-        Route::prefix('final-product-item')->name('final_product_item.')->group(function(){
-            
+
+        Route::prefix('final-product-item')->name('final_product_item.')->group(function(){      
             Route::get('/','FinalProductItem@index')->name('index');
             Route::post('/store','FinalProductItem@store')->name('store');
             Route::get('/edit/{id}','FinalProductItem@edit')->name('edit');
-              Route::post('/update/{id}','FinalProductItem@update')->name('update');
+            Route::post('/update/{id}','FinalProductItem@update')->name('update');
             Route::get('/delete/{id}','FinalProductItem@destroy')->name('destroy');
+            Route::get('/status/{id}','FinalProductItem@changeStatus')->name('status');
+
         });
+
+        Route::prefix('product-addon-price')->name('product_addon_price.')->group(function(){  
+
+            Route::get('/','ProductAddonController@index')->name('index');
+
+            // Route::post('/store','FinalProductItem@store')->name('store');
+            // Route::get('/edit/{id}','FinalProductItem@edit')->name('edit');
+            // Route::post('/update/{id}','FinalProductItem@update')->name('update');
+            // Route::get('/delete/{id}','FinalProductItem@destroy')->name('destroy');
+            // Route::get('/status/{id}','FinalProductItem@changeStatus')->name('status');
+
+        });
+
+
+
+        //in this route gorup we will store addon prices 
+
+
+
         
     });
 

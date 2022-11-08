@@ -267,6 +267,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
+                <a href="{{route('admin.product_addon_price.index')}}" class="nav-link">
+                  <i class=" nav-icon fa-solid fa-camera"></i>
+                  <p>Product Addon </p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{route('admin.categories.show')}}" class="nav-link">
                   <i class="fa-solid nav-icon fa-box-archive"></i>
                   <p>Product categories</p>

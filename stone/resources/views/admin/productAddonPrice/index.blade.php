@@ -7,12 +7,12 @@
     <div class="container-fluid">
       <div class="row ">
         <div class="col-12 col-md-6">
-          <h1 class="m-0">Final Product  </h1>
+          <h1 class="m-0">Product Item Addon Price  </h1>
         </div><!-- /.col -->
         <div class="col-12 col-md-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
-            <li class="breadcrumb-item"> <a href="#"> Final Product Item  </a></li>
+            <li class="breadcrumb-item"> <a href="#"> Product Item Addon Price  </a></li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -23,7 +23,7 @@
   <div class="container-fluid">
     <div class="row px-3">
         <p>
-          List Of  Product Item 
+          Product Item Addon Price List 
         </p>
     </div>
     <div class="row p-3 ">
@@ -35,35 +35,35 @@
               <form action="{{route('admin.final_product_item.store')}}" method="post"  enctype="multipart/form-data" >
     
                 @csrf
+             
               <div class="form-group">
-                <label for="exampleInputEmail1"> Name</label>
-              
-                <input type="text" name="name" value="{{ old('name') }}" class="form-control" >
-                @if ($errors->has('name'))
-                      <span class="error text-danger">{{ $errors->first('name') }}</span>
-                @endif
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1"> Parent  </label>
+                <label for="exampleInputEmail1"> Select what is create  </label>
                     <select name="parent_id" id="" class="form-control">
-                        <option value="">Select</option>
-
-                        @foreach($data as $matrial)
                         
-                        <option value="{{$matrial->id}}">{{$matrial->name}}</option>
+                        @foreach($product_top_category as $top_category)
+                        
+                        <option value="{{$top_category->id}}">{{$top_category->name}}</option>
                          @endforeach
 
                     </select>
               </div>
-
               <div class="form-group">
-                <label for="exampleInputEmail1"> Image</label>
-              
-                <input type="file" name="image" value="{{ old('image') }}" class="form-control" >
-                @if ($errors->has('image'))
-                      <span class="error text-danger">{{ $errors->first('image') }}</span>
-                @endif
+                <label for="exampleInputEmail1"> Select Matrial  </label>
+                    <select name="parent_id" id="" class="form-control">
+                        
+                        @foreach($product_matrial as $matrial)
+                        
+                        <option value="{{$matrial->id}}">{{$matrial->matrial_name}}</option>
+                         @endforeach
+
+                    </select>
               </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1"> Addon Price  </label>
+                    <input type="text" name="" class="form-control" >
+              </div>
+
+        
               
               <div class="form-group">
                 <label for="exampleInputEmail1"></label>
@@ -86,12 +86,13 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Image</th>
-                  <th scope="col">parent</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Design</th>
+                  <th scope="col">Matrial Name</th>
+                  <th scope="col">Price</th>
                 
                   <th scope="col">Created At</th>
-                  <th>Status</th>
+              
                   <th>Action</th>
                 </tr>
               </thead>
@@ -100,10 +101,10 @@
                 <tr>
                   <th>{{$matrial->id}}</th>
                   <td>{{$matrial->name}}</td>
-                  <td> <img src="{{APP_PATH.FINAL_ITEM_IMAGE.$matrial->image}}" height="50" alt=""> </td>
+                  <td>  </td>
                   <td>{{$matrial->parent_id}}</td>
                   <td>{{$matrial->created_at->format('d-m-Y')}}</td>
-                  <td> @if($matrial->is_active == 1)  <i class="fa fa-circle text-success"></i>  @else <i class="fa fa-circle text-danger"></i>  @endif </td>
+                
                   <td><a href="{{route('admin.final_product_item.edit',$matrial->id)}}"><i class="fa fa-edit fa-2x text-info"></i></a> &ensp;
                      <a href="{{route('admin.final_product_item.destroy',$matrial->id)}}   "><i class="fa fa-trash fa-2x text-danger"></i></a>  &ensp;
                      <a href="{{route('admin.final_product_item.status',$matrial->id)}}"> @if($matrial->is_active == 1)  <i class="fas fa-toggle-off fa-2x text-danger"></i>  @else <i class="fas fa-toggle-off fa-2x text-success"></i>  @endif  </a>
@@ -127,21 +128,3 @@
 
   @endsection
 
-  @section('scripts')
-<script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
-<script>
-  ClassicEditor
-      .create( document.querySelector( '#short_description' ) )
-      .catch( error => {
-          console.error( error );
-      } );
-</script>
-<script>
-    ClassicEditor
-        .create( document.querySelector( '#description' ) )
-        .catch( error => {
-            console.error( error );
-        } );
-  </script>
-
-@endsection

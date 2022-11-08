@@ -7,12 +7,12 @@
     <div class="container-fluid">
       <div class="row ">
         <div class="col-12 col-md-6">
-          <h1 class="m-0">Product Matrial Edit </h1>
+          <h1 class="m-0">Final Product Item  Edit </h1>
         </div><!-- /.col -->
         <div class="col-12 col-md-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
-            <li class="breadcrumb-item"> <a href="{{route('admin.product_matrial.index')}}"> Product Matrial </a></li>
+            <li class="breadcrumb-item"> <a href="{{route('admin.final_product_item.index')}}"> Final Product Item </a></li>
             <li class="breadcrumb-item"> <a href="#"> Edit </a></li>
           </ol>
         </div><!-- /.col -->
@@ -30,13 +30,14 @@
             
         <div class="p-4 border">
 
-            <form action="{{route('admin.final_product_item.update',$data->id  )}}" method="post"  enctype="multipart/form-data" >
+            <form action="{{route('admin.final_product_item.update',$data->id)}}" method="post"  enctype="multipart/form-data" >
   
               @csrf
             <div class="form-group">
-              <label for="exampleInputEmail1">Matrial Name</label>
+              <label for="exampleInputEmail1"> Name</label>
              
               <input type="text" name="name" value="{{$data->name}}" class="form-control" >
+
               @if ($errors->has('name'))
                     <span class="error text-danger">{{ $errors->first('matrial_name') }}</span>
               @endif
@@ -47,9 +48,9 @@
                     <select name="parent_id" id="" class="form-control">
                         <option value="">Select</option>
 
-                        @foreach($data as $matrial)
+                        @foreach($matrials as $matrial)
                         
-                        <option value="{{$matrial->id}}">{{$matrial->name}}</option>
+                        <option value="{{$matrial->id}}"  {{ ($data->parent_id != null  &&  $data->parent_id == $matrial->id  )? 'selected' : '';   }}>{{$matrial->name}}</option>
                          @endforeach
 
                     </select>
@@ -58,17 +59,19 @@
               <div class="form-group">
                 <label for="exampleInputEmail1"> Image</label>
               
-                <input type="file" name="image" value="{{ old('image') }}" class="form-control" >
+                <input type="file" name="image" value="" class="form-control" >
                 @if ($errors->has('image'))
                       <span class="error text-danger">{{ $errors->first('image') }}</span>
                 @endif
               </div>
+
+              <img src="{{APP_PATH.FINAL_ITEM_IMAGE.$data->image}}" height="120" alt="">
             
             <div class="form-group">
               <label for="exampleInputEmail1"></label>
-              <button type="submit" class="btn btn-success">Save </button>
+              <button type="submit" class="btn btn-success">update  </button>
           
-              <a  class="btn btn-danger" href="" >Cancle </a>
+              <a  class="btn btn-danger" href="" >Cancel </a>
           </div>
             
           </div>
