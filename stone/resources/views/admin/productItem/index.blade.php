@@ -127,21 +127,3 @@
 
   @endsection
 
-  @section('scripts')
-<script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
-<script>
-  ClassicEditor
-      .create( document.querySelector( '#short_description' ) )
-      .catch( error => {
-          console.error( error );
-      } );
-</script>
-<script>
-    ClassicEditor
-        .create( document.querySelector( '#description' ) )
-        .catch( error => {
-            console.error( error );
-        } );
-  </script>
-
-@endsection

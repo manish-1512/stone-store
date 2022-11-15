@@ -51,8 +51,10 @@ class FinalProductItem extends Controller
         $request->validate([
             'name' => 'required|string|unique:final_product_items,name',
             'image' => 'nullable|image|mimes:png|max:1048',
-         ]); 
-         
+        ]); 
+        
+
+
          $this->final_product_item_model->name = $request->name;
          $this->final_product_item_model->parent_id = $request->parent_id;
 
@@ -66,6 +68,10 @@ class FinalProductItem extends Controller
 
                 
                     } 
+
+                    
+
+
 
 
          if($this->final_product_item_model->save()){
@@ -109,13 +115,12 @@ class FinalProductItem extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+    
         $request->validate([
-            'name' => 'required|string|unique:final_product_items,name',
+            'name' => 'required|string|unique:final_product_items,name,'.$id,
             'image' => 'nullable|image|mimes:png|max:1048',
          ]);
-         
-
+        
           $product_item =   $this->final_product_item_model->where('id',$id)->first(); 
           
            $product_item->name = $request->name;
@@ -150,6 +155,9 @@ class FinalProductItem extends Controller
        $this->final_product_item_model->where('id',$id)->delete(); 
        return redirect()->back();
     }
+
+
+   
 
     public function changeStatus($id){
 

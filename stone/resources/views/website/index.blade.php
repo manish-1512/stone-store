@@ -14,10 +14,10 @@
       <!-- The slideshow -->
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="https://d3rmug8w64gkex.cloudfront.net/media/sliders/Certified_Natural_Rudraksha.jpg" alt="Los Angeles" width="100%" >
+          <img src="https://www.shubhgems.com/media/sliders/Certified_Natural_Rudraksha.jpg" alt="Los Angeles" width="100%" >
         </div>
         <div class="carousel-item">
-          <img src="https://d3rmug8w64gkex.cloudfront.net/media/sliders/new-customized-jewellery.jpg" alt="Chicago" width="100%">
+          <img src="https://www.shubhgems.com/media/sliders/new-customized-jewellery.jpg" alt="Chicago" width="100%">
         </div>
        
       </div>
@@ -278,7 +278,7 @@
                   <div class="row">
                     <div class="col-12 mt-2">
                       <a href="#">
-                        <img src="https://d3rmug8w64gkex.cloudfront.net/media/rudraksha/rudraksha-mala.png" alt="" class="rudraksha_image p-3 img-fluid">
+                        <img src="https://www.shubhgems.com/media/rudraksha/rudraksha-mala.png" alt="" class="rudraksha_image p-3 img-fluid">
 
                       </a>
                     </div>

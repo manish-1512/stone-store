@@ -16,6 +16,9 @@ use App\Http\Controllers\Auth\GoogleSocialiteController;
 
 //################################################################ website  route start here #################################################################
  
+
+
+
 Route::namespace('App\Http\Controllers\Website')->group(function(){
 
     Route::get('/', 'HomeController@index')->name('home');
@@ -130,12 +133,17 @@ Route::namespace('App\Http\Controllers\Admin')->prefix('admin')->name('admin.')-
         Route::prefix('product-addon-price')->name('product_addon_price.')->group(function(){  
 
             Route::get('/','ProductAddonController@index')->name('index');
+            Route::post('/store','ProductAddonController@store')->name('store');
+            Route::get('get-design','ProductAddonController@getDesign')->name('get_design');
 
-            // Route::post('/store','FinalProductItem@store')->name('store');
-            // Route::get('/edit/{id}','FinalProductItem@edit')->name('edit');
-            // Route::post('/update/{id}','FinalProductItem@update')->name('update');
-            // Route::get('/delete/{id}','FinalProductItem@destroy')->name('destroy');
-            // Route::get('/status/{id}','FinalProductItem@changeStatus')->name('status');
+        });
+
+        Route::prefix('product')->name('product.')->group(function(){  
+
+            Route::get('/','ProductController@index')->name('index');
+            Route::get('/add','ProductController@create')->name('add');
+           
+
 
         });
 

@@ -30,7 +30,7 @@
             
         <div class="p-4 border">
 
-            <form action="{{route('admin.final_product_item.update',$data->id)}}" method="post"  enctype="multipart/form-data" >
+          <form action="{{route('admin.final_product_item.update',$data->id)}}" method="post"  enctype="multipart/form-data" >
   
               @csrf
             <div class="form-group">
@@ -59,7 +59,7 @@
               <div class="form-group">
                 <label for="exampleInputEmail1"> Image</label>
               
-                <input type="file" name="image" value="" class="form-control" >
+                <input type="file" name="image" class="form-control" >
                 @if ($errors->has('image'))
                       <span class="error text-danger">{{ $errors->first('image') }}</span>
                 @endif
@@ -69,7 +69,7 @@
             
             <div class="form-group">
               <label for="exampleInputEmail1"></label>
-              <button type="submit" class="btn btn-success">update  </button>
+              <input type="submit" class="btn btn-success" value="Submit">
           
               <a  class="btn btn-danger" href="" >Cancel </a>
           </div>
@@ -88,21 +88,3 @@
 
   @endsection
 
-  @section('scripts')
-<script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
-<script>
-  ClassicEditor
-      .create( document.querySelector( '#short_description' ) )
-      .catch( error => {
-          console.error( error );
-      } );
-</script>
-<script>
-    ClassicEditor
-        .create( document.querySelector( '#description' ) )
-        .catch( error => {
-            console.error( error );
-        } );
-  </script>
-
-@endsection

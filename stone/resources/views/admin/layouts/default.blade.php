@@ -27,6 +27,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{asset('admin/plugins/toastr/toastr.min.css')}}">
   <link rel="stylesheet" href="{{asset('admin/dist/css/adminlte.min.css')}}">
   <link rel="stylesheet" href="{{asset('admin/plugins/summernote/summernote-bs4.min.css')}}">
+  <!-- jQuery -->
+<script src="{{asset('admin/plugins/jquery/jquery.min.js')}}"></script>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -249,7 +251,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('admin.product.index')}}" class="nav-link">
                   <i class=" nav-icon fa-solid fa-camera"></i>
                   <p>Products</p>
                 </a>
@@ -426,8 +428,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- REQUIRED SCRIPTS -->
 
-<!-- jQuery -->
-<script src="{{asset('admin/plugins/jquery/jquery.min.js')}}"></script>
+
 <!-- Bootstrap 4 -->
 <script src="{{asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- DataTables  & Plugins -->
@@ -448,7 +449,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- AdminLTE App -->
 <script src="{{asset('admin/dist/js/adminlte.min.js')}}"></script>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
+{{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"> --}}
 
 </script>
 <script src="{{asset('admin/plugins/summernote/summernote-bs4.min.js')}}"></script>

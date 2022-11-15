@@ -32,24 +32,43 @@
             
         <div class="p-4 border">
 
-              <form action="{{route('admin.final_product_item.store')}}" method="post"  enctype="multipart/form-data" >
+              <form action="{{route('admin.product_addon_price.store')}}" method="post"  enctype="multipart/form-data" >
     
                 @csrf
              
+
+
+
               <div class="form-group">
                 <label for="exampleInputEmail1"> Select what is create  </label>
-                    <select name="parent_id" id="" class="form-control">
-                        
-                        @foreach($product_top_category as $top_category)
-                        
+                    <select name="item_parent_id" id="category" class="form-control get_design">
+                    
+                        @foreach($product_top_category as $top_category) 
                         <option value="{{$top_category->id}}">{{$top_category->name}}</option>
                          @endforeach
 
                     </select>
+
+                    
+                  
+                    @if ($errors->has('parent_id'))
+                    <span class="error text-danger">{{ $errors->first('parent_id') }}</span>
+                   @endif
               </div>
+
+             
+
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Select Design  </label>
+                <select class="browser-default form-control" name="final_product_item_id" id="sub_category"></select>
+              </div>
+
+
+
               <div class="form-group">
                 <label for="exampleInputEmail1"> Select Matrial  </label>
-                    <select name="parent_id" id="" class="form-control">
+                    <select name="product_matrial_id" id="" class="form-control">
                         
                         @foreach($product_matrial as $matrial)
                         
@@ -57,10 +76,17 @@
                          @endforeach
 
                     </select>
+
+                    @if ($errors->has('product_matrial_id'))
+                      <span class="error text-danger">{{ $errors->first('product_matrial_id') }}</span>
+                     @endif
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1"> Addon Price  </label>
-                    <input type="text" name="" class="form-control" >
+                    <input type="text" name="price" class="form-control" >
+                    @if ($errors->has('price'))
+                      <span class="error text-danger">{{ $errors->first('price') }}</span>
+                     @endif
               </div>
 
         
@@ -100,9 +126,10 @@
           @foreach($data as $matrial)
                 <tr>
                   <th>{{$matrial->id}}</th>
-                  <td>{{$matrial->name}}</td>
-                  <td>  </td>
-                  <td>{{$matrial->parent_id}}</td>
+                  <td>{{$matrial->parent}}</td>
+                  <td>{{$matrial->design}}</td>
+                  <td>{{$matrial->matrial}}</td>
+                  <td>{{$matrial->price}}</td>
                   <td>{{$matrial->created_at->format('d-m-Y')}}</td>
                 
                   <td><a href="{{route('admin.final_product_item.edit',$matrial->id)}}"><i class="fa fa-edit fa-2x text-info"></i></a> &ensp;
@@ -126,5 +153,38 @@
 
 
 
+  <script src="http://code.jquery.com/jquery-3.4.1.js"></script>
+        
+  <script>
+              $(document).ready(function () {
+              $('#category').on('change', function () {
+              let id = $(this).val();
+              $.ajax({
+              type: 'GET',
+              url: '{{ route("admin.product_addon_price.get_design")}}',
+              data: {id:id},
+              success: function (response) {
+         
+              $('#sub_category').append(`<option value="0" disabled selected>Select Design </option>`);
+                
+              $('#sub_category').empty();
+              $.each( response.data, function( key, value ) {
+                $('#sub_category').append('<option value="'+value.id+'">'+value.name+' </option>');
+      
+              });
+
+              // response.forEach(data => {
+              //     $('#sub_category').append(`<option value="${data['id']}">${data['name']}</option>`);
+              //     });
+              }
+          });
+      });
+  });
+  </script> 
   @endsection
+
+
+
+
+
 
