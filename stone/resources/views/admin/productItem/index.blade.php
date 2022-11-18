@@ -48,7 +48,7 @@
                     <select name="parent_id" id="" class="form-control">
                         <option value="">Select</option>
 
-                        @foreach($data as $matrial)
+                        @foreach($top as $matrial)
                         
                         <option value="{{$matrial->id}}">{{$matrial->name}}</option>
                          @endforeach

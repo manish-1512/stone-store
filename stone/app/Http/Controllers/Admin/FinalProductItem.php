@@ -27,7 +27,10 @@ class FinalProductItem extends Controller
     public function index()
     {
         $data =    $this->final_product_item_model->select('final_product_items.name','final_product_items.is_active','final_product_items.id','final_product_items.image','final_product_items.created_at','sub_item.name as parent_id')->leftJoin('final_product_items as sub_item','final_product_items.parent_id','sub_item.id')->get();
-        return view('admin.productItem.index',compact('data'));
+
+        $top = $this->final_product_item_model->where('parent_id',null)->get();
+
+        return view('admin.productItem.index',compact('data','top'));
     }
 
     /**
@@ -52,7 +55,7 @@ class FinalProductItem extends Controller
             'name' => 'required|string|unique:final_product_items,name',
             'image' => 'nullable|image|mimes:png|max:1048',
         ]); 
-        
+    
 
 
          $this->final_product_item_model->name = $request->name;
@@ -68,11 +71,6 @@ class FinalProductItem extends Controller
 
                 
                     } 
-
-                    
-
-
-
 
          if($this->final_product_item_model->save()){
             return redirect()->back();

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Categories;
+use App\Models\FinalProductItem;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -36,8 +38,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-      
-        return view('admin.product.add');
+
+      $categories =  Categories::where('parent_id','!=','null')->get();
+       $available_to_create = FinalProductItem::where('parent_id',null)->get(); 
+        
+        return view('admin.product.add', compact('categories','available_to_create'));
     }
 
     /**
@@ -46,6 +51,16 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function DesignsData(Request $request){
+        
+        $available_to_create = FinalProductItem::wherein('parent_id',$request->checked_value)->get();
+        
+        return response()->json(['data'=>$available_to_create]);
+
+    }
+
+
     public function store(Request $request)
     {
         $request->validate([

@@ -15,6 +15,7 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('slug');
             $table->text('description');
             $table->boolean('status')->default(1);
@@ -29,6 +30,7 @@ class CreateProductsTable extends Migration
             $table->integer('quantity');
             $table->string('available_to_create')->comment('in this colum we save what kind of item we create form this product like ring,pandent etc.this colum relate to the final_product_items table ids');
             $table->boolean('disappear_after_order')->comment('these kind of products is not show after order');
+            $table->string('certificate');
             $table->timestamps();
         });
     }

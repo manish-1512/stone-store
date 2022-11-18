@@ -142,7 +142,7 @@ Route::namespace('App\Http\Controllers\Admin')->prefix('admin')->name('admin.')-
 
             Route::get('/','ProductController@index')->name('index');
             Route::get('/add','ProductController@create')->name('add');
-           
+            Route::post('design-data','ProductController@DesignsData')->name('designs_data');
 
 
         });
