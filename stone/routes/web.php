@@ -142,7 +142,16 @@ Route::namespace('App\Http\Controllers\Admin')->prefix('admin')->name('admin.')-
 
             Route::get('/','ProductController@index')->name('index');
             Route::get('/add','ProductController@create')->name('add');
-            Route::post('design-data','ProductController@DesignsData')->name('designs_data');
+            Route::post('/add','ProductController@store')->name('store');
+            Route::get('/edit/{id}','ProductController@edit')->name('edit');
+            Route::post('/update/{id}','ProductController@update')->name('update');
+            Route::get('/delete/{id}','ProductController@destroy')->name('destroy');
+            Route::get('/status/{id}','ProductController@changeStatus')->name('status');
+            Route::get('/show/{id}','ProductController@show')->name('show');
+
+            Route::get('/stock-status/{id}','ProductController@stockStatus')->name('stock_status');
+
+           // Route::post('design-data','ProductController@DesignsData')->name('designs_data');
 
 
         });

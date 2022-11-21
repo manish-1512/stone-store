@@ -23,14 +23,15 @@ class CreateProductsTable extends Migration
             $table->string('image');
             $table->text('gallery_images');
             $table->string('sku');
-            $table->bigInteger('category_id');
+            $table->unsignedBigInteger('category_id');
             $table->decimal('price');
             $table->decimal('sale_price');
             $table->boolean('stock_status')->default(1);
             $table->integer('quantity');
-            $table->string('available_to_create')->comment('in this colum we save what kind of item we create form this product like ring,pandent etc.this colum relate to the final_product_items table ids');
+            $table->string('available_to_create')->default(null)->comment('in this colum we save what kind of item we create form this product like ring,pandent etc.this colum relate to the final_product_items table ids');
             $table->boolean('disappear_after_order')->comment('these kind of products is not show after order');
             $table->string('certificate');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }
