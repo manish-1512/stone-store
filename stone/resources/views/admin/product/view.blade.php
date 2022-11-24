@@ -85,9 +85,7 @@
                     <th style="width:20%" scope="col">Gallery </th>
                     <td>
                         @foreach($product_data->gallery_images as $image)
-
                         <img id="fullsizeimage" src="{{APP_PATH.PRODUCT_IMAGE.$image}}" alt="" height="200">
-
                         @endforeach
                     </td>
                 </tr>    
@@ -133,8 +131,6 @@
       modal.style.display = "none";
     }
     </script>
-
-
 
   @if ($message = Session::get('success'))
 <script>

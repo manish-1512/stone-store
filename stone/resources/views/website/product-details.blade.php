@@ -6,7 +6,8 @@
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 mb-0 "><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Tank Top T-Shirt</strong></div>
+          <div class="col-md-12 mb-0 "><a href="{{route('home')}}">Home</a> <span class="mx-1 mb-0">/</span> 
+            <a href="{{route('products',$product_details->category->slug)}}">{{$product_details->category->name}}</a> <span class="mx-1 mb-0">/</span> {{$product_details->name}} </div>
         </div>
       </div>
     </div>  
@@ -18,18 +19,17 @@
               
             <div id="product-carousel" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner bg-light">
-                  <div class="carousel-item active">
-                      <img class="w-100 h-100" src="https://d3rmug8w64gkex.cloudfront.net/media/catalog/product/cache/20e68cdecc310a480bda7999995ffa78/b/s/bs140314-2.jpg" alt="Image">
-                  </div>
+
+                <div class="carousel-item active">
+                  <img class="w-100 h-100" src="{{APP_PATH.PRODUCT_IMAGE.$product_details->image}}" alt="{{$product_details->name}}">
+              </div>
+
+                @foreach($product_details->gallery_images as $key => $images )
                   <div class="carousel-item">
-                      <img class="w-100 h-100" src="https://d3rmug8w64gkex.cloudfront.net/media/catalog/product/cache/20e68cdecc310a480bda7999995ffa78/b/s/bs140314-2.jpg" alt="Image">
+                      <img class="w-100 h-100" src="{{APP_PATH.PRODUCT_IMAGE.$images}}" alt="Image">
                   </div>
-                  <div class="carousel-item">
-                      <img class="w-100 h-100" src="https://d3rmug8w64gkex.cloudfront.net/media/catalog/product/cache/20e68cdecc310a480bda7999995ffa78/b/s/bs140314-2.jpg" alt="Image">
-                  </div>
-                  <div class="carousel-item">
-                      <img class="w-100 h-100" src="https://d3rmug8w64gkex.cloudfront.net/media/catalog/product/cache/20e68cdecc310a480bda7999995ffa78/b/s/bs140314-2.jpg" alt="Image">
-                  </div>
+                @endforeach  
+
               </div>
               <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
                   <i class="fa fa-2x fa-angle-left text-dark"></i>
@@ -71,13 +71,13 @@
           
           </div>
           <div class="col-md-6">
-            <h2 class="">Blue Sapphire (Neelam) Sri Lanka- 8.62 Carat (9.50 Ratti)</h2>
-            <p>SKU: 2EFFG45</p>
-            <p>Stock: in Stock</p>
-            <p>Rating : 4.8</p>
-            <p><strong class="text-primary h4">$50.00</strong></p>
+            <h2 class="">{{$product_details->name}}</h2>
+            <p>SKU: {{$product_details->sku}}</p>
+            <p>Stock: @if($product_details->stock_status == 1 ) In Stock @else Out Of Stock @endif </p>
+            {{-- <p>Rating : 4.8 </p> --}}
+            <p><strong class="text-primary h4">{{$product_details->sale_price}}</strong></p>
             
-             <p>SELECT FOR RING / PENDANT / BRACELET</p> 
+             <p>SELECT WHICH YOU WANT TO MAKE</p> 
 
      
             <div class="section over-hide z-bigger">
@@ -86,164 +86,46 @@
                   <div class="row justify-content-center ">
                     
                     <div class="col-12 pb-5">
-                      <input class="checkbox-tools" type="radio" name="tools" id="loose" checked>
+                      <input class="checkbox-tools" type="radio" name="make" id="loose" checked>
                       <label class="for-checkbox-tools" for="loose">
                         <img src="{{asset('images/icon/loose.png')}}" alt="" height="50">
                         <p>LOOSE </p> 
-                      </label><!--
-                      --><input class="checkbox-tools" type="radio" name="tools" id="ring" class="" value="ring">
-                      <label class="for-checkbox-tools" for="ring">
-                        <img src="{{asset('images/icon/ring.png')}}" alt="" height="50">
-                       <p> RING</p> 
                       </label>
-                      <input class="checkbox-tools" type="radio" name="tools" id="pandent" class="" value="pandent">
-                      <label class="for-checkbox-tools" for="pandent">
-                        <img src="{{asset('images/icon/pandent.png')}}" alt="" height="50">
-                        <p>PANDENT </p>  
+                      
+                      @foreach($available_to_create as $available)
+                      <input class="checkbox-tools check" type="radio" name="make" id="{{$available->name}}" value="{{$available->id}}">
+                      <label class="for-checkbox-tools" for="{{$available->name}}">
+                        <img src="{{APP_PATH.FINAL_ITEM_IMAGE.$available->image}}" alt="" height="50">
+                       <p> {{$available->name}}</p> 
                       </label>
-                      <input class="checkbox-tools" type="radio" name="tools" id="bracelate" class="" value="bracelate">
-                      <label class="for-checkbox-tools" for="bracelate">
-                        <img src="{{asset('images/icon/pandent.png')}}" alt="" height="50">
-                        <p> BRACELETE </p> 
-                      </label>
+                      @endforeach
+                      
                     </div>
                    
                    
                   </div>
                 </div>	
 
-                  <div class="container ring" style="display: none">
+                  <div class="container" >
 
-                      <div class="matel">
+                      <div class="matel" style="display:none" id="matel">
                         <div class="form-group row">
-                          <label for="inputPassword" class="col-sm-6 col-form-label">MATAL</label>
+                          <label for="inputPassword" class="col-sm-6 col-form-label">SELECT MATAL</label>
                           <div class="col-sm-6">
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <select class="form-control" name="matel" id="exampleFormControlSelect1">
                               <option>Select One</option>
-                              <option>Gold</option>
-                              <option>silver</option>
-                              <option>white Gold</option>
-                              <option>yellow gold</option>
+                             @foreach($product_matrials as $matrial)
+                              <option value="{{$matrial->id}}">{{$matrial->matrial_name}}</option>
+                             @endforeach
                             </select>
                           </div>
                         </div>
                       </div>
 
-                      <div class="disign">
-
-                        <div class="row">
-
-                          @for($i=1;$i<10;$i++)
-                          <div class="col-4 col-md-3 ">
-                            <input class="checkbox-tools2" type="radio" name="design" id="pandent{{$i}}">
-                            <label class="for-checkbox-tool" for="pandent{{$i}}">
-                              <img src="{{asset('images/icon/pandent.png')}}" alt="" height="50">
-                            <p class="mb-0 mt-1"> <small>PANDENT </small></p>  
-                            </label>
-                          </div>
-                          @endfor
-                        </div>
-
-                      </div>
-
-                      <div class="ringsize">
-                        <div class="form-group row">
-                          <label for="inputPassword" class="col-sm-6 col-form-label">SELECT RING SIZE SYSTEM</label>
-                          <div class="col-sm-6">
-                            <select class="form-control" id="exampleFormControlSelect1">
-                              <option>Select One</option>
-                              <option>India</option>
-                              <option>Us</option>
-                              <option>Canade</option>
-                              <option>UK</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div> 
-                      <div class="ringsize">
-                        <div class="form-group row">
-                          <label for="inputPassword" class="col-sm-6 col-form-label">SELECT RING SIZE</label>
-                          <div class="col-sm-6">
-                            <select class="form-control" id="exampleFormControlSelect1">
-                              <option>Select One</option>
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div> 
+                    
                   </div>
                   {{-- ring end here --}}
 
-                   {{-- pandent start here --}}
-
-                  <div class="container pandent" style="display: none">
-
-                    <div class="matel">
-                      <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-6 col-form-label">MATAL</label>
-                        <div class="col-sm-6">
-                          <select class="form-control" id="exampleFormControlSelect1">
-                            <option>Select One</option>
-                            <option>Gold</option>
-                            <option>silver</option>
-                            <option>white Gold</option>
-                            <option>yellow gold</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="disign">
-
-                      <div class="row">
-
-                        @for($i=1;$i<10;$i++)
-                        <div class="col-4 col-md-3 ">
-                          <input class="checkbox-tools2" type="radio" name="design" id="pandent{{$i}}">
-                          <label class="for-checkbox-tool" for="pandent{{$i}}">
-                            <img src="{{asset('images/icon/pandent.png')}}" alt="" height="50">
-                          <p class="mb-0 mt-1"> <small>PANDENT </small></p>  
-                          </label>
-                        </div>
-                        @endfor
-                      </div>
-
-                    </div>
-
-                    <div class="ringsize">
-                      <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-6 col-form-label">SELECT RING SIZE SYSTEM</label>
-                        <div class="col-sm-6">
-                          <select class="form-control" id="exampleFormControlSelect1">
-                            <option>Select One</option>
-                            <option>India</option>
-                            <option>Us</option>
-                            <option>Canade</option>
-                            <option>UK</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div> 
-                    <div class="ringsize">
-                      <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-6 col-form-label">SELECT RING SIZE</label>
-                        <div class="col-sm-6">
-                          <select class="form-control" id="exampleFormControlSelect1">
-                            <option>Select One</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div> 
-                </div>
-
-                  {{-- pandent end here --}}
 
               </div>
             </div>
@@ -298,4 +180,45 @@
         </div>
       </div>
     </div>
+
+
+  
+
+
+
+@endsection
+
+@section('css')
+
+<script type="text/javascript">
+  $(function() {
+    $("input[name='make']").click(function() {
+      if ($(".check").is(":checked")) {
+        $("#matel").show();
+      } else {
+        $("#matel").hide();
+      }
+    });
+  });
+</script>
+
+
+<script>
+
+  $('select[name="matel"]').on('change', function() {
+    var matrialId = $(this).val();
+    var makefor = $("input[name='make']:checked").val();
+    
+    $.ajax({
+        type: "POST",
+        url: "{{route('product.available_designs')}}",
+        data: {product_matrial_id  : matrialId , item_parent_id : makefor , _token: "{{ csrf_token() }}" },
+        success: function (data) {
+                  
+          console.log(data);
+        }
+    });
+  });
+</script>
+
 @endsection

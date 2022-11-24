@@ -456,6 +456,8 @@
     <script src="{{asset('js/main.js')}}"></script>
     <script src="{{asset('js/wow.js')}}"></script>
     
+    @yield('css')
+
     <script>
       $(document).ready(function() {
       "use strict";

@@ -48,7 +48,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 124; /* Sit on top */
   padding-top: 100px; /* Location of the box */
   left: 0;
   top: 0;
@@ -64,7 +64,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   margin: auto;
   display: block;
   width: 80%;
-  max-width: 700px;
+  max-width: 600px;
 }
 
 /* Caption of Modal Image */
@@ -99,11 +99,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 /* The Close Button */
 .close {
-  position: absolute;
+
   top: 15px;
-  right: 35px;
+  right: 100px;
   color: #f1f1f1;
-  font-size: 40px;
+  font-size: 90px;
   font-weight: bold;
   transition: 0.3s;
 }

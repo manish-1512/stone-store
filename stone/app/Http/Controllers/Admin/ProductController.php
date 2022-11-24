@@ -9,6 +9,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
 {
@@ -27,12 +28,7 @@ class ProductController extends Controller
 
     public function index()
     {
-               $products =   $this->product_model->with('Category')->get();
-
-            //     echo "<pre>";
-
-            //    print_r( json_decode(json_encode($products), true)); die;
-
+        $products = $this->product_model->with('Category')->get(); 
 
         return view('admin.product.index',compact('products'));
     }
@@ -61,16 +57,12 @@ class ProductController extends Controller
     public function DesignsData(Request $request){
         
         $available_to_create = FinalProductItem::wherein('parent_id',$request->checked_value)->get();
-
         return response()->json(['data'=>$available_to_create]);
-
     }
 
 
     public function store(Request $request)
     {
-
-        
 
         $validator = Validator::make($request->all(), [  
 
@@ -113,12 +105,21 @@ class ProductController extends Controller
 
 
 
+
+
+
+
                                       if($request->hasFile('image')){
         
                                         $image =  $request->file('image');
+
                                         $extension = $image->getClientOriginalExtension();
                                         $file_name = time().'.'.$extension;
-                                        $image->move(PRODUCT_IMAGE,$file_name);
+
+                                        $image =   Image::make($image->getRealPath());
+                                        $image->resize(480,340);
+                                        $image->save(PRODUCT_IMAGE.$file_name,100);
+
                                         $this->product_model->image = $file_name;
         
                                     } 
@@ -133,7 +134,10 @@ class ProductController extends Controller
                                         foreach($request->file('gallery_images') as $file)
                                         {
                                             $name = time().rand(1,999).'-gallery.'.$file->extension();
-                                            $file->move(PRODUCT_IMAGE, $name);  
+
+                                            $image_gallary =   Image::make($file->getRealPath());
+                                            $image_gallary->resize(480,340);
+                                            $image_gallary->save(PRODUCT_IMAGE.$name,100);
                                             array_push($files,$name);  
                                         }
                                         $this->product_model->gallery_images = implode(",",$files);
@@ -181,6 +185,11 @@ class ProductController extends Controller
         $available_to_create = FinalProductItem::where('parent_id',null)->get(); 
         $product_data =  $this->product_model->find($id);
         $product_data->gallery_images = explode(',',$product_data->gallery_images);
+        $product_data->available_to_create = explode(',',$product_data->available_to_create);
+
+
+        // echo "<pre>";
+        // print_r( json_decode(json_encode($product_data), true));die();
 
         return view('admin.product.edit',compact('product_data','categories','available_to_create'));
     }

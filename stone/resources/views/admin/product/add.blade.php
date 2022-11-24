@@ -12,6 +12,7 @@
         <div class="col-12 col-md-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{route('admin.product.index')}}">Products</a></li>
             <li class="breadcrumb-item"> <a href="#"> Add New Product</a></li>
           </ol>
         </div><!-- /.col -->

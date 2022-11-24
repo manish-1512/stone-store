@@ -113,7 +113,8 @@
               <div class="form-group">    
                     @foreach($available_to_create as $available)
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input deisgn" name="available_to_create[]" type="checkbox" id="inlineCheckbox1" value="{{$available->id}}">
+                        <input class="form-check-input deisgn" name="available_to_create[]"
+                         type="checkbox" id="inlineCheckbox1" value="{{$available->id}}" <?php echo ($product_data->available_to_create != null && in_array($available->id,$product_data->available_to_create)) ? "checked" :'';  ?> >
                         <label class="form-check-label" for="inlineCheckbox1">{{$available->name}}</label>
                     </div>
                     @endforeach

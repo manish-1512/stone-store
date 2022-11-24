@@ -10,4 +10,9 @@ class ProductVariant extends Model
     use HasFactory;
 
     protected $table = 'product_variants';
+
+    public  function finalItem(){
+
+        return $this->belongsTo(FinalProductItem::class,'final_product_item_id');
+    }
 }

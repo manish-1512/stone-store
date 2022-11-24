@@ -43,8 +43,8 @@
                   <td>{{$item->category->name}}</td>
                   <td>{{$item->price}}</td>
                   <td>{{$item->sale_price}}</td>
-                  <td>@if($item->stock_status == 1) In Stcok @else Out Of Stock @endif</td>
-                  <td>@if($item->status == 1) Active @else InActive @endif</td>
+                  <td>@if($item->stock_status == 1) <span class="text-success"> In Stcok </span> @else <span class="text-danger"> Out Of Stock </span> @endif</td>
+                  <td>@if($item->status == 1) <span class="text-success">Active </span>  @else <span class="text-danger"> InActive </span> @endif</td>
                   <td>{{$item->created_at}}</td>
                   <td>
                     <a href="{{route('admin.product.status',$item->id)}}" title="Change Active status" class="btn btn-outline-info"><i class="fa fa-edit"></i></a> 

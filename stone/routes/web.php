@@ -23,12 +23,16 @@ Route::namespace('App\Http\Controllers\Website')->group(function(){
 
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/product-category/{slug}','CategoryController@index')->name('categorypage');
+
     Route::get('/products/{slug}','ProductController@index')->name('products');
+    Route::get('/products/{category}/{slug}','ProductController@productDetails')->name('product_details');
     
     Route::get('/about', 'HomeController@about')->name('about');
     Route::get('/contact', 'HomeController@contactUs')->name('contact');
     Route::get('/terms-conditions','HomeController@terms' )->name('terms-conditions');
     Route::get('/privacy-policy','HomeController@privacyPolicy')->name('privacy-policy');
+
+    Route::post('available-designs','ProductController@availableDesigns')->name('product.available_designs');
     });
 
 
