@@ -71,7 +71,12 @@
           
           </div>
           <div class="col-md-6">
-            <h2 class="">{{$product_details->name}}</h2>
+
+            <form action="" method="POST" >
+
+            <input type="hidden" name="product_id" value="{{$product_details->id}}">
+            <input type="hidden" class="price" name="price" value="{{$product_details->sale_price}}">
+            <h2 class="price">{{$product_details->name}}</h2>
             <p>SKU: {{$product_details->sku}}</p>
             <p>Stock: @if($product_details->stock_status == 1 ) In Stock @else Out Of Stock @endif </p>
             {{-- <p>Rating : 4.8 </p> --}}
@@ -113,7 +118,7 @@
                           <label for="inputPassword" class="col-sm-6 col-form-label">SELECT MATAL</label>
                           <div class="col-sm-6">
                             <select class="form-control" name="matel" id="exampleFormControlSelect1">
-                              <option>Select One</option>
+                              <option selected>Select One</option>
                              @foreach($product_matrials as $matrial)
                               <option value="{{$matrial->id}}">{{$matrial->matrial_name}}</option>
                              @endforeach
@@ -130,7 +135,9 @@
               </div>
             </div>
               
-            <p><a href="cart.html" class="buy-now btn btn-sm btn-block btn-primary">Add To Cart</a></p>
+            <p><button type="submit"  class="buy-now btn btn-sm btn-block btn-primary">Add To Cart</button></p>
+
+          </form>
 
           </div>
         </div>
@@ -191,8 +198,15 @@
 @section('css')
 
 <script type="text/javascript">
+
+
+
+
+
   $(function() {
     $("input[name='make']").click(function() {
+      $(".disign").empty();
+
       if ($(".check").is(":checked")) {
         $("#matel").show();
       } else {
@@ -200,6 +214,16 @@
       }
     });
   });
+  
+  $(function() {
+    $(".designbox").click(function() {
+      
+
+        alert('hello checked');
+      
+    });
+  });
+
 </script>
 
 
@@ -208,17 +232,20 @@
   $('select[name="matel"]').on('change', function() {
     var matrialId = $(this).val();
     var makefor = $("input[name='make']:checked").val();
-    
+   
     $.ajax({
         type: "POST",
         url: "{{route('product.available_designs')}}",
         data: {product_matrial_id  : matrialId , item_parent_id : makefor , _token: "{{ csrf_token() }}" },
         success: function (data) {
-                  
-          console.log(data);
+          $(".disign").empty();
+          $("#matel").append(data.design);
+         
         }
     });
   });
+
 </script>
+
 
 @endsection

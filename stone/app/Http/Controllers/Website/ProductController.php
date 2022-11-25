@@ -35,27 +35,29 @@ class ProductController extends Controller
 
     public function availableDesigns(Request $request){
 
-        $available_designs = ProductVariant::with('finalItem')->where('product_matrial_id',$request->product_matrial_id)->where('item_parent_id',$request->item_parent_id)->get();
+        $available_designs = ProductVariant::select('final_product_items.id as id','final_product_items.name','final_product_items.image','product_variants.price')->leftJoin('final_product_items','final_product_items.id','product_variants.final_product_item_id')->where('product_matrial_id',$request->product_matrial_id)->where('item_parent_id',$request->item_parent_id)->get();
 
 
-        $div	=	' <div class="disign">
+                      $dsg = '<div class="disign"> <div class="row">';
+                      foreach ($available_designs as $key=> $designs) {
 
-                        <div class="row">
+                        $dsg .= '<div class="col-4 col-md-3 "> 
+                                <input class="designbox"  type="radio" name="design" id ="'.$designs->id.'"  value="'.$designs->id.'" >
+                             <label class="" for="'.$designs->id.'">
+                             <img src=" '. APP_PATH.FINAL_ITEM_IMAGE.$designs->image .' " alt="" height="50">
+                             <p class="mb-0 mt-1"> '.$designs->name.' </p>
+                             <p class="mb-0 mt-1"> + ₹'.$designs->price.' </p>
+                             </label>
+                             </div>';
 
-                          @for($i=1;$i<10;$i++)
-                          <div class="col-4 col-md-3 ">
-                            <input class="checkbox-tools2" type="radio" name="design" id="pandent{{$i}}">
-                            <label class="for-checkbox-tool" for="pandent{{$i}}">
-                              <img src="" alt="" height="50">
-                            <p class="mb-0 mt-1"> <small>PANDENT </small></p>  
-                            </label>
-                          </div>
-                          @endfor
-                        </div>
+                      }
+                      
+                      $dsg .= '</div> </div>';
+                      
+                 
+                       
 
-                      </div>';
-
-        return response()->json($available_designs);
+        return response()->json(['design' => $dsg]);
     }
 
 

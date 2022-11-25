@@ -48,11 +48,12 @@ Route::get('/thank-you', function () {  return view('website.thankyou');})->name
 
 
 
- Route::group(['middleware'=> ['auth'] ,'namespace' => 'App\Http\Controllers'],function(){
+ Route::group(['middleware'=> ['auth'] ,'namespace' => 'App\Http\Controllers','as' => 'user.'],function(){
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/my-profile', 'Website\UserController@profile')->name('profile');
+
+    Route::post('/my-profile', 'Website\UserController@updateProfile')->name('profile_update');
+    Route::get('/dashboard', 'Website\UserController@dashboard')->name('dashboard');
 
  });
 

@@ -11,8 +11,8 @@ class ProductVariant extends Model
 
     protected $table = 'product_variants';
 
-    public  function finalItem(){
+    // public  function finalItem(){
 
-        return $this->belongsTo(FinalProductItem::class,'final_product_item_id');
-    }
+    //     return $this->belongsTo(FinalProductItem::class,'final_product_item_id');
+    // }
 }
