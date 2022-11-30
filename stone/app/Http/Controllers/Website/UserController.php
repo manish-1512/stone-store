@@ -21,7 +21,6 @@ class UserController extends Controller
 
         
         $profile = User::find(Auth::user()->id);
-
         $profile->name = $request->name;
         $profile->email = $request->email;
         $profile->phone = $request->phone;
@@ -31,6 +30,11 @@ class UserController extends Controller
         return redirect()->back();
 
     }   
+
+    public function changePassword(){
+
+        return view('website.user.password');
+        }
 
     public function dashboard(){
         return view('website.user.dashboard');

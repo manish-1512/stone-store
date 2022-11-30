@@ -36,7 +36,7 @@
               ><span>Profile</span>
           </a>
           <a
-             href=""
+             href="{{route('user.change_password')}}"
              class="list-group-item list-group-item-action"
              ><i class="fas fa-lock fa-fw "></i><span>Change Password</span></a
             >
