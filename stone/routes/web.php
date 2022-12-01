@@ -54,8 +54,13 @@ Route::get('/thank-you', function () {  return view('website.thankyou');})->name
     Route::post('/my-profile', 'Website\UserController@updateProfile')->name('profile_update');
 
     Route::get('/change-password', 'Website\UserController@changePassword')->name('change_password');
-
+    Route::post('/change-password', 'Website\UserController@updatePassword')->name('update_password');
     Route::get('/dashboard', 'Website\UserController@dashboard')->name('dashboard');
+    Route::get('/manage-address', 'Website\UserController@manageAddress')->name('manage_address');
+    Route::post('/add-new-address', 'Website\UserController@addNewAddress')->name('add_address');
+    Route::get('/edit-address/{id}', 'Website\UserController@editAddress')->name('edit_address');
+
+
 
  });
 

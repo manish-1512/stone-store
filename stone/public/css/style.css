@@ -429,7 +429,7 @@ section.home-category-section {padding: 30px 0;}
 .site-navbar {
   background: #fff;
   margin-bottom: 0px;
-  z-index: 1999;
+  z-index: auto;
   position: relative; }
   .site-navbar.transparent {
     background: transparent; }

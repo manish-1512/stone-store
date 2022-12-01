@@ -37,7 +37,7 @@
           </a>
           <a
              href="{{route('user.change_password')}}"
-             class="list-group-item list-group-item-action"
+             class="list-group-item list-group-item-action <?php echo  (Request::segment(1) == "change-password") ? "active" : '' ;?>"
              ><i class="fas fa-lock fa-fw "></i><span>Change Password</span></a
             >
           <a
@@ -46,7 +46,7 @@
              ><i class="fas fa-shopping-cart fa-fw "></i><span>My Orders</span></a
             >
           <a
-             href=""
+             href="{{route('user.manage_address')}} <?php echo  (Request::segment(1) == "manage-address") ? "active" : '' ;?>"
              class="list-group-item list-group-item-action"
              ><i class="fas fa-location fa-fw "></i><span>Manage Address</span></a
             >
